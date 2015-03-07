@@ -1,0 +1,164 @@
+
+      <br><br>
+      <h1 class="header center orange-text">New Meeting</h1>
+      <div class="row">
+        <div class="col offset-m2 s12 m8">
+            <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="title" type="text" class="validate">
+                    <label for="title">Meeting Title</label>
+                  </div>
+                </div>
+                <div class="row">
+                      <div class="input-field col s12">
+                        <textarea class="materialize-textarea"></textarea>
+                        <label>Description</label>
+                      </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="startDate" type="date" class="datepicker">
+                    <label for="startDate">Start Date</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col s4 m4">
+                      <label>Hour</label>
+                        <select id="hour">
+                          <option value="" disabled selected>Choose your hour</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="col s4 m4">
+                      <label>Minute</label>
+                        <select id="minute">
+                          <option value="" disabled selected>Choose your minutes</option>
+                          <option value="00">00</option>
+                          <option value="15">15</option>
+                          <option value="30">30</option>
+                          <option value="45">45</option>
+                        </select>
+                    </div>
+                    <div class="col s4 m4">
+                      <label>AM/PM</label>
+                        <select id="meridiem">
+                          <option value="AM" selected>AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <p>Is this a recurring Meeting?</p>
+                    <p>
+                      <input class="with-gap" name="recurringmeeting" type="radio" value="No" id="recurringNo" checked />
+                      <label for="recurringNo">No</label>
+                    </p>
+                    <p>
+                      <input class="with-gap" name="recurringmeeting" type="radio" value="Yes" id="recurringYes"/>
+                      <label for="recurringYes">Yes</label>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="occursEvery" type="text" class="validate">
+                    <label for="occursEvery">Occurs every</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="organizer" type="text" class="validate">
+                    <label for="organizer">Organizer</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="dialIn" type="text" class="validate">
+                    <label for="dialIn">Dial In</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="dcoDcs" type="text" class="validate">
+                    <label for="dcoDcs">DCO/DCS Link</label>
+                  </div>
+                </div>
+                <div class="row">                
+                  <h5 class="header left orange-text">Customize Appearance</h5>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12">
+                      <label>Card Background</label>
+                        <select id="cardBackground">
+                          <option value="" disabled selected>Choose your color</option>
+                          <option value="1">light-blue darken-1</option>
+                          <option value="2">cyan darken-1</option>
+                          <option value="3">teal darken-1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                      <label>Card Icon</label>
+                        <select id="cardIcon">
+                          <option value="" disabled selected>Choose your icon</option>
+                          <option value="1">light-blue darken-1</option>
+                          <option value="2">cyan darken-1</option>
+                          <option value="3">teal darken-1</option>
+                        </select>
+                    </div>
+                    <div class="col s12 m6">
+                      <label>Card Icon Color</label>
+                        <select id="cardBackground">
+                          <option value="white" selected>White</option>
+                          <option value="black">Black</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                  <h5>Live Preview</h5>
+                  <div class="col s12 m12">
+                          <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light center-align light-blue darken-1">
+                              <i class="large mdi-file-cloud white-text"></i>
+                            </div>
+                            <div class="card-content">
+                              <span class="card-title activator grey-text text-darken-4">Title of Meeting<i class="mdi-navigation-more-vert right"></i></span>
+                              
+                              <p>Occurs every Wed. 1200 hrs</p>
+                              <p><a href="#">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
+                            </div>
+                            <div class="card-reveal">
+                              <span class="card-title grey-text text-darken-4">Tile of Meetings<i class="mdi-navigation-close right"></i></span>
+                              <p>Description of meeting.</p>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row right-align">
+                      <button class="waves-effect waves-orange btn-flat">Cancel</button>
+                      <button class="btn waves-effect waves-light orange darken-4" type="submit" name="action">Create
+                        <i class="mdi-content-add right"></i>
+                      </button>
+                </div>
+            </form>
+          </div>
+
+      </div>
+      <br><br>
+
+  
