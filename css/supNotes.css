@@ -1,0 +1,24 @@
+.note-area label.active{
+
+}
+
+.note-area .card-content label.active{
+	line-height: 18px;
+}
+
+.note-area input, .note-area textarea{
+	padding-bottom: 0px;
+}
+
+.note-area .card-content{
+	margin-bottom: 0px;
+}
+
+.note-area .card-action .input-field{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.note-area .card-action p.action-title{
+	margin-top: 0px;
+}
