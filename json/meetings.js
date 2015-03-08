@@ -1,7 +1,7 @@
 [
 	{
 		ID:"1",
-		meetingTitle: "Box IA",
+		Title: "Box IA",
 		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
 		startDate: "",
 		hour: "",
@@ -12,14 +12,14 @@
 		organizer: "Carlos Gonzalez",
 		dialIn: "555-555-5555",
 		dcsLink: "http://somelink.here/andid",
-        status: "",
-		cardColor: "",
-		cardIcon: "",
-		cardIconColor: ""
+        status: "active",
+		cardColor: "light-blue darken-1",
+		cardIcon: "mdi-action-lock",
+		cardIconColor: "black"
 	},
 	{
 		ID:"2",
-		meetingTitle: "EFB MCM",
+		Title: "EFB MCM",
 		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
 		startDate: "",
 		hour: "",
@@ -37,7 +37,7 @@
 	},
 		{
 		ID:"3",
-		meetingTitle: "Box PM",
+		Title: "Box PM",
 		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
 		startDate: "",
 		hour: "",
@@ -49,13 +49,13 @@
 		dialIn: "555-555-5555",
 		dcsLink: "http://somelink.here/andid",
         status: "",
-		cardColor: "",
-		cardIcon: "",
-		cardIconColor: ""
+		cardColor: "light-blue darken-1",
+		cardIcon: "mdi-action-lock",
+		cardIconColor: "black"
 	},
 		{
 		ID:"4",
-		meetingTitle: "Mobility Pilots",
+		Title: "Mobility Pilots",
 		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
 		startDate: "",
 		hour: "",

@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-light center-align ng-class: meeting.cardColor;" ng-href="#/meeting-overview/{{meeting.ID}}">
+    <i class="large ng-class: [meeting.cardIcon, meeting.cardIconColor];"></i>
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">{{meeting.Title}}<i class="mdi-navigation-more-vert right"></i></span>
+    
+    <p>{{meeting.occursEvery}}</p>
+    <p><a ng-href="#/meeting/{{meeting.ID}}">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">{{meeting.Title}} <i class="mdi-navigation-close right"></i></span>
+    <p>{{meeting.description}}</p>
+  </div>
+</div>

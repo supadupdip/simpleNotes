@@ -10,12 +10,13 @@ angular.module('SimpleNotes')
 			templateUrl: '/templates/pages/edit-meeting.html'
 		})
 		.when('/newMeeting',{
-			templateUrl: '/templates/pages/new-meeting.html'
+			templateUrl: '/templates/pages/new-meeting.html',
+			controller: 'NewMeetingController'
 		})
 		.when('/',{
 			templateUrl: '/templates/pages/meetings-index.html',
-			controller: 'MeetingsIndexController',
-			controllerAs: 'meetingsIndexCtrl'
+			controller: 'MeetingsIndexController'
+			//controllerAs: 'meetingsIndexCtrl'
 
 		})
 		.otherwise({redirectTo: '/'});

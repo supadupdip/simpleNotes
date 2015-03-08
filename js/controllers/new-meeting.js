@@ -1,5 +1,5 @@
 angular.module('SimpleNotes')
-	.controller('NewMeetingController', function($http){
+	.controller('NewMeetingController',['$http', '$scope', function($http, $scope){
 		var controller = this;
 
 		this.saveMeeting = function(meeting){
@@ -17,4 +17,4 @@ angular.module('SimpleNotes')
 		}
 
 
-	});
+	}]);
