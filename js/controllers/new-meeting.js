@@ -14,6 +14,7 @@ angular.module('SimpleNotes')
 		var controller = this;
 
 		$scope.meeting = {
+			startDate: new Date(),
 			cardIcon: 'mdi-action-lock',
 			cardIconColor: 'black-text',
 			cardColor: 'light-blue darken-1',
@@ -43,33 +44,58 @@ angular.module('SimpleNotes')
 	}])
 	.directive('datepicker', function(){
 		return{
+			restrict: 'EA',
 			require: 'ngModel',
 			link: function($scope, $element, $attrs, ngModelCtrl){
-				console.log(ngModelCtrl);
-				var initializedDatepicker = false;
-				$attrs.$observe('datapickerFormat', function (newValue){
-					//If we've already initialized this, just update the option
-					if(initializedDatepicker){
-						$element.pickadate('option','format', newValue);
-					}
-					// $observe is still called immediately, even if there's no initial value
-					//so we check to configrm there's at least one format set
-					else if(newValue){
-						$element.pickadate({
-							format: newValue,
-							onStart: function(context){
-								console.log(context);
-								$scope.$apply(function(){
-									ngModelCtrl.$setViewValue(context);
-								})
-								//
-							}
+				//Parser used when the data is traveling back to the model
+			
+				//Formatter used when the data is traveling from the model to the view
+
+				//initialize control
+				
+				$element.pickadate({
+					format: 'ddd mmm dd yyyy',
+					formatSubmit: 'yyyy mm dd',
+					hiddenName: false,
+					hiddenPrefix: 'hidedate__',
+					closeOnSelect: true,
+					onRender: function(){
+						var DateString = function(date){
+							console.log(date);
+							return date;
+						}
+						ngModelCtrl.$formatters.push(DateString);
+					},
+					onSet: function(context){
+						console.log('We are setting the datepicker control', context);
+						var currentValue = $element.val();
+						console.log(currentValue);
+						var rawDate = $("[name='startdate']").val();
+						var newDate = new Date(rawDate);
+						console.log(newDate);
+						/*
+						var ISOConversion = function(date){
+							console.log('Date before ISO conversion', date);
+							return date.toISOString();
+						}
+						ngModelCtrl.$parsers.push(ISOConversion);						
+						*/
+						ngModelCtrl.$setViewValue(newDate);
+						$scope.$digest();
+						//2015-03-15T21:03:08.241Z
+
+						/* Old way we were trying to set view value
+						$scope.$apply(function(){
+							ngModelCtrl.$setViewValue(currentValue);
 						});
-						initializedDatepicker = true;
-					}
+						$element.val(currentValue);*/
+					} 
 				});
+
+				
+
+
 			}
 		}
 
-	})
-	;
+	});

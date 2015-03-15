@@ -23,8 +23,7 @@
 
                     <!-- Changed this div from an input 
                     <input datepicker datepicker-format="d mmmm, yyyy" id="startDate" type="date" class="datepicker" ng-model="meeting.startDate">-->
-                    <input id="startDate" type="date" ng-model="meeting.startDate" required>
-                    
+                    <input id="startDate" type="date" name="startdate" ng-model="meeting.startDate" required>
                   </div>
                 </div>
                 <div class="row">
@@ -149,7 +148,10 @@
                 </div>
             </form>
           </div>
-
+          <div clas="col-2">
+            <pre>{{meeting | json}}
+            </pre> 
+          </div>
       </div>
       <br><br>
 
