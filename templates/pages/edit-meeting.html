@@ -23,7 +23,7 @@
 
                     <!-- Changed this div from an input 
                     <input datepicker datepicker-format="d mmmm, yyyy" id="startDate" type="date" class="datepicker" ng-model="meeting.startDate">-->
-                    <input jsondate id="startDate" type="date" name="startdate" ng-model="meeting.startDate" required>
+                    <input id="startDate" type="date" name="startdate" ng-model="meeting.startDate" required>
                   </div>
                 </div>
                 <div class="row">
@@ -142,7 +142,7 @@
 
                 <div class="row right-align">
                       <button class="waves-effect waves-orange btn-flat" ng-click="logIt(meeting)">Cancel</button>
-                      <button class="btn waves-effect waves-light orange darken-4" ng-click="save(meeting)" name="action">Create
+                      <button class="btn waves-effect waves-light orange darken-4" type="submit" name="action">Create
                         <i class="mdi-content-add right"></i>
                       </button>
                 </div>

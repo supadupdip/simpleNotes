@@ -6,7 +6,7 @@ angular.module('SimpleNotes')
 		.when('/editNotes',{
 			templateUrl: '/templates/pages/edit-meeting-notes.html'
 		})
-		.when('/editMeeting',{
+		.when('/editMeeting/:meetingID',{
 			templateUrl: '/templates/pages/edit-meeting.html'
 		})
 		.when('/newMeeting',{

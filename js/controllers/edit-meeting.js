@@ -1,30 +1,31 @@
 angular.module('SimpleNotes')
-	.controller('NewMeetingController',['$http', '$scope', function($http, $scope){    
-		var controller = this;
+	.controller('NewMeetingController',['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
 
+		var controller = this;
+		var  meetingID = $routeParams.id;
 		$scope.meeting = {
 			startDate: new Date(),
 			cardIcon: 'mdi-action-lock',
 			cardIconColor: 'black-text',
 			cardColor: 'light-blue darken-1',
-			recurring: false,
-			meetingActive: true,
-			participants:[]
+			recurring: false
 		};
+
+		$http({method: 'GET', url: 'spsweb'})
+			.catch(function(error){
+				// take care of errors
+			})
+			.success(function(response){
+				// 
+				$scope.meeting = response;
+			})
 
 		$scope.logIt = function(meeting){
 			console.log(meeting);
 		};
 
-		$scope.save = function(meeting){
+		this.saveMeeting = function(meeting){
 			$scope.errors = null;
-			console.log(meeting);
-			var fireBase = new Firebase("https://sweltering-fire-6088.firebaseIO.com/meetings");
-			var datapush = fireBase.push(meeting);
-			var meetingID = datapush.key();
-			console.log(meetingID);
-			
-			/*
 			$http({method: 'POST', url:'/json'})
 				.catch(function(meeting){
 					$scope.errors = meeting.data.error;
@@ -35,7 +36,7 @@ angular.module('SimpleNotes')
 					//Show success message
 
 					//Redirect to Meeting overview
-				});*/
+				});
 		};
 
 
@@ -96,35 +97,4 @@ angular.module('SimpleNotes')
 			}
 		}
 
-	})	
-	.directive('jsondate', function(){
-		return{
-			restrict: 'A',
-			require: 'ngModel',
-			link: function($scope, $element, $attrs, ngModelCtrl){
-				 var parser = function(date){
-				 	console.log('running when date is set');
-				 	var jsonDate = date.toJSON();
-				 	return jsonDate;
-				 }
-				 ngModelCtrl.$parsers.push(parser);
-
-
-				 var formatter = function(date){
-				 	var thisdate = new Date(date);
-				 	return thisdate;
-
-				 }
-				 ngModelCtrl.$formatters.push(formatter);
-
-				 /*
-				 $element.on('change', function(){
-				 		var currentValue = $element.val();
-				 		ngModelCtrl.$setViewValue(currentValue);
-						$scope.$digest();
-
-				 });*/
-
-			}
-		}
 	});
