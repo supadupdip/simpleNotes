@@ -1,6 +1,6 @@
 
       <br><br>
-      <h1 class="header center orange-text">New Meeting</h1>
+      <h1 class="header center orange-text">{{meeting.Title}}</h1>
 
       <div class="row">
         <div class="col offset-m2 s12 m8">
@@ -103,6 +103,8 @@
                 <div class="row">                
                   <h5 class="header left orange-text">Customize Appearance</h5>
                 </div>
+                <card-selects></card-selects>
+                <!--
                 <div class="row">
                     <div class="col s12 m12">
                       <label>Card Background</label>
@@ -131,7 +133,7 @@
                           <option value="black-text">Black</option>
                         </select>
                     </div>
-                </div>
+                </div>-->
                 <div class="row">
                   <h5>Live Preview</h5>
                   <div class="col s12 m12">
@@ -141,7 +143,8 @@
                 </div>
 
                 <div class="row right-align">
-                      <button class="waves-effect waves-orange btn-flat" ng-click="logIt(meeting)">Cancel</button>
+                      <button class="waves-effect waves-orange btn-flat" ng-click="Delete(meeting)">Delete</button>
+                      <button class="waves-effect waves-orange btn-flat" href="/">Cancel</button>
                       <button class="btn waves-effect waves-light orange darken-4" type="submit" name="action">Create
                         <i class="mdi-content-add right"></i>
                       </button>

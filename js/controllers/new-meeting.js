@@ -1,7 +1,8 @@
 angular.module('SimpleNotes')
-	.controller('NewMeetingController',['$http', '$scope', function($http, $scope){    
+	.controller('NewMeetingController',['$http', '$scope','meetingFactory', 'connectionFactory', function($http, $scope, meetingFactory, connectionFactory){    
 		var controller = this;
 
+/*
 		$scope.meeting = {
 			startDate: new Date(),
 			cardIcon: 'mdi-action-lock',
@@ -10,19 +11,19 @@ angular.module('SimpleNotes')
 			recurring: false,
 			meetingActive: true,
 			participants:[]
-		};
+		};*/
+
+		$scope.meeting = meetingFactory.getMeeting();
 
 		$scope.logIt = function(meeting){
 			console.log(meeting);
 		};
 
 		$scope.save = function(meeting){
-			$scope.errors = null;
-			console.log(meeting);
-			var fireBase = new Firebase("https://sweltering-fire-6088.firebaseIO.com/meetings");
-			var datapush = fireBase.push(meeting);
-			var meetingID = datapush.key();
+			
+			var meetingID = connectionFactory.newMeeting(meeting);
 			console.log(meetingID);
+			//window.location('/editMeeting/meetingID'+meetingID);
 			
 			/*
 			$http({method: 'POST', url:'/json'})

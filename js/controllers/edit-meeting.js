@@ -1,16 +1,26 @@
 angular.module('SimpleNotes')
-	.controller('NewMeetingController',['$http', '$scope', '$routeParams', function($http, $scope, $routeParams){
+	.controller('EditMeetingController',['$http', '$scope', '$routeParams', 'meetingFactory', 'connectionFactory', function($http, $scope, $routeParams, meetingFactory, connectionFactory){
 
-		var controller = this;
-		var  meetingID = $routeParams.id;
-		$scope.meeting = {
-			startDate: new Date(),
-			cardIcon: 'mdi-action-lock',
-			cardIconColor: 'black-text',
-			cardColor: 'light-blue darken-1',
-			recurring: false
-		};
+		//var controller = this;
+		var  meetingID = $routeParams.meetingID;
+		
+		//$scope.meeting = meetingFactory.getMeeting();
+		//$scope.meeting = connectionFactory.getMeeting(meetingID);
+			console.log('now getting meeting with ID', meetingID);
+			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
+			console.log('the url is ', url);
+			var ref = new Firebase(url);
 
+			//We are going to read some data now
+			ref.on("value", function(snapshot) {
+			  console.log('logging snapshot', snapshot.val());
+			  $scope.meeting = snapshot.val();
+			  $scope.$digest();
+			}, function (errorObject) {
+			  console.log("The read failed: " + errorObject.code);
+			});
+		//console.log($scope.meeting);
+		/*
 		$http({method: 'GET', url: 'spsweb'})
 			.catch(function(error){
 				// take care of errors
@@ -19,7 +29,7 @@ angular.module('SimpleNotes')
 				// 
 				$scope.meeting = response;
 			})
-
+		*/
 		$scope.logIt = function(meeting){
 			console.log(meeting);
 		};

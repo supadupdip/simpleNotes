@@ -90,19 +90,21 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="dialIn" type="text" class="validate" ng-model="dialIn">
+                    <input id="dialIn" type="text" class="validate" ng-model="meeting.dialIn">
                     <label for="dialIn">Dial In</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="dcoDcs" type="text" class="validate" ng-model="dcsLink">
+                    <input id="dcoDcs" type="text" class="validate" ng-model="meeting.dcsLink">
                     <label for="dcoDcs">DCO/DCS Link</label>
                   </div>
                 </div>
                 <div class="row">                
                   <h5 class="header left orange-text">Customize Appearance</h5>
                 </div>
+                <card-selects></card-selects>
+                <!--
                 <div class="row">
                     <div class="col s12 m12">
                       <label>Card Background</label>
@@ -131,7 +133,7 @@
                           <option value="black-text">Black</option>
                         </select>
                     </div>
-                </div>
+                </div>-->
                 <div class="row">
                   <h5>Live Preview</h5>
                   <div class="col s12 m12">
