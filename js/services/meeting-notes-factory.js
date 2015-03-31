@@ -74,7 +74,6 @@ angular.module('SimpleNotes')
 		connection.getMeeting = function(meetingID){
 			console.log('now getting meeting with ID', meetingID);
 			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
-			console.log('the url is ', url);
 			var ref = new Firebase(url);
 
 			//We are going to read some data now
@@ -84,6 +83,20 @@ angular.module('SimpleNotes')
 			  return meetingObj;
 			}, function (errorObject) {
 			  console.log("The read failed: " + errorObject.code);
+			});
+		}
+
+		connection.updateMeeting = function(meetingID, meeting){
+			console.log('now updating meeting with ID', meetingID);
+			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
+			var ref = new Firebase(url);
+			
+			ref.update(meeting, function(error) {
+			  if (error) {
+			    alert("Data could not be saved." + error);
+			  } else {
+			    alert("Data saved successfully.");
+			  }
 			});
 		}
 

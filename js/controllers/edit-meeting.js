@@ -33,7 +33,16 @@ angular.module('SimpleNotes')
 		$scope.logIt = function(meeting){
 			console.log(meeting);
 		};
+		$scope.Cancel = function(){
+			if(history.length){
+				window.history.back();
+			}
+			else{
+				window.location = "/";
+			}
+			
 
+		};
 		this.saveMeeting = function(meeting){
 			$scope.errors = null;
 			$http({method: 'POST', url:'/json'})
@@ -91,8 +100,6 @@ angular.module('SimpleNotes')
 						*/
 						ngModelCtrl.$setViewValue(newDate);
 						$scope.$digest();
-						//2015-03-15T21:03:08.241Z
-
 						/* Old way we were trying to set view value
 						$scope.$apply(function(){
 							ngModelCtrl.$setViewValue(currentValue);
@@ -107,4 +114,13 @@ angular.module('SimpleNotes')
 			}
 		}
 
+	})
+	.directive('hastooltip',function(){
+		return{
+			restrict: 'A',
+			link: function($scope, $element, $attrs){
+				console.log($element);
+				$element.tooltip({delay: 50});
+			}
+		}
 	});
