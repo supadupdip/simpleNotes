@@ -43,19 +43,8 @@ angular.module('SimpleNotes')
 			
 
 		};
-		this.saveMeeting = function(meeting){
-			$scope.errors = null;
-			$http({method: 'POST', url:'/json'})
-				.catch(function(meeting){
-					$scope.errors = meeting.data.error;
-					console.log($scope.errors.text);
-				})
-				.success(function(response){
-					console.log(response.text);
-					//Show success message
-
-					//Redirect to Meeting overview
-				});
+		$scope.Update = function(meeting){
+			connectionFactory.updateMeeting(meetingID, meeting);
 		};
 
 
