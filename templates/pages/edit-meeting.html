@@ -1,4 +1,22 @@
-
+<div ng-show="page.loading" class="center-align">
+  <div preloader></div>
+</div>
+<div ng-show="page.error">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title black-text">Uh Oh!</span>
+              <p>{{page.errorMessage}}</p>
+            </div>
+            <div class="card-action">
+              <a href='#' ng-click="Cancel()">Go Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div ng-hide="page.error">
       <br><br>
       <h1 class="header center orange-text">{{meeting.Title}}</h1>
 
@@ -160,19 +178,38 @@
                   </div>
                 </div>
                 <div class="row right-align">
-                      <button class="waves-effect waves-orange btn-flat" ng-click="Delete(meeting)">Delete</button>
+                      <a class="waves-effect waves-orange btn-flat modal-trigger" modal-trigger href="#deleteModal">Delete</a>
                       <button class="waves-effect waves-orange btn-flat" ng-click="Cancel()">Cancel</button>
-                      <button class="btn waves-effect waves-light orange darken-4" ng-click="Update(meeting)">Save
-                        <i class="mdi-content-add right"></i>
+                      <div preloader ng-show="page.updating"></div>
+                      <button ng-hide="page.updating" class="btn waves-effect waves-light orange darken-4" ng-click="Update(meeting)">Update
+                        <i class="mdi-content-save right"></i>
                       </button>
                 </div>
             </form>
           </div>
           <div clas="col-2">
-            <pre>{{meeting | json}}
+            <pre id="myJSON">{{meeting | json}}
             </pre> 
           </div>
       </div>
-      <br><br>
+</div>
+
+  <!-- Modal Structure -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <h4>Delete this meeting?</h4>
+      <p>Deleting the meeting will also delete any associated meeting notes.</p>
+    </div>
+    <div class="modal-footer">
+      <button ng-click="ConfirmedDelete(meeting)" class="modal-action modal-close waves-effect waves-green btn-flat">Delete</button>
+      <button class="modal-action modal-close waves-effect waves-orange btn-flat modal-close">Cancel</button>
+    </div>
+  </div>
+    <div id="itemDeleted" class="modal">
+    <div class="modal-content">
+      <h4>The meeting was deleted</h4>
+      <div preloader></div><p>Redirecting.....</p>
+    </div>
+  </div>
 
   

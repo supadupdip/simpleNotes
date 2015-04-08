@@ -58,7 +58,7 @@ angular.module('SimpleNotes')
 		return myFactory;
 
 	})
-	.factory('connectionFactory', function(){
+	.factory('connectionFactory', ['$firebaseObject', function($firebaseObject){
 		var connection = {};
 
 		connection.newMeeting = function(meeting){
@@ -75,33 +75,21 @@ angular.module('SimpleNotes')
 			console.log('now getting meeting with ID', meetingID);
 			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
 			var ref = new Firebase(url);
-
-			//We are going to read some data now
-			ref.on("value", function(snapshot) {
-			  console.log('logging snapshot', snapshot.val());
-			  var meetingObj = snapshot.val();
-			  return meetingObj;
-			}, function (errorObject) {
-			  console.log("The read failed: " + errorObject.code);
-			});
+			
+			return $firebaseObject(ref);
+			
 		}
 
-		connection.updateMeeting = function(meetingID, meeting){
+		connection.updateMeeting = function(meetingID){
 			console.log('now updating meeting with ID', meetingID);
+			var wasSuccessful = false;
 			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
 			var ref = new Firebase(url);
+			return $firebaseObject(ref);
 			
-			ref.update(meeting, function(error) {
-			  if (error) {
-			    alert("Data could not be saved." + error);
-			  } else {
-			    alert("Data saved successfully.");
-			  }
-			});
+
 		}
 
 		return connection;
 
-
-
-	});
+	}]);

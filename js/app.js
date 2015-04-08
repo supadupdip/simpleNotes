@@ -1,1 +1,1 @@
-angular.module("SimpleNotes",['ngRoute']);
+angular.module("SimpleNotes",['ngRoute', 'firebase']);

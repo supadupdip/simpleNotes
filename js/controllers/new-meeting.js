@@ -2,17 +2,6 @@ angular.module('SimpleNotes')
 	.controller('NewMeetingController',['$http', '$scope','meetingFactory', 'connectionFactory', function($http, $scope, meetingFactory, connectionFactory){    
 		var controller = this;
 
-/*
-		$scope.meeting = {
-			startDate: new Date(),
-			cardIcon: 'mdi-action-lock',
-			cardIconColor: 'black-text',
-			cardColor: 'light-blue darken-1',
-			recurring: false,
-			meetingActive: true,
-			participants:[]
-		};*/
-
 		$scope.meeting = meetingFactory.getMeeting();
 
 		$scope.logIt = function(meeting){
@@ -97,35 +86,4 @@ angular.module('SimpleNotes')
 			}
 		}
 
-	})	
-	.directive('jsondate', function(){
-		return{
-			restrict: 'A',
-			require: 'ngModel',
-			link: function($scope, $element, $attrs, ngModelCtrl){
-				 var parser = function(date){
-				 	console.log('running when date is set');
-				 	var jsonDate = date.toJSON();
-				 	return jsonDate;
-				 }
-				 ngModelCtrl.$parsers.push(parser);
-
-
-				 var formatter = function(date){
-				 	var thisdate = new Date(date);
-				 	return thisdate;
-
-				 }
-				 ngModelCtrl.$formatters.push(formatter);
-
-				 /*
-				 $element.on('change', function(){
-				 		var currentValue = $element.val();
-				 		ngModelCtrl.$setViewValue(currentValue);
-						$scope.$digest();
-
-				 });*/
-
-			}
-		}
 	});
