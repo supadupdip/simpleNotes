@@ -26,3 +26,12 @@
 .note-area .card-action p.action-title{
 	margin-top: 0px;
 }
+
+h3.card-title{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+a.meeting-card-icon-link{
+	margin-right: 0px;
+}

@@ -38,6 +38,10 @@ angular.module('SimpleNotes')
 			mentions: []
 		}
 
+		var participant = {
+
+		}
+
 		var myFactory = {};
 
 		myFactory.getMeeting = function(){
@@ -52,23 +56,30 @@ angular.module('SimpleNotes')
 			return noteCard;
 		}
 		myFactory.getActionItem = function(){
-			return actionItem;
+			return  actionItem;
 		}
 
 		return myFactory;
 
 	})
-	.factory('connectionFactory', ['$firebaseObject', function($firebaseObject){
+	.factory('connectionFactory', ['$firebaseObject', '$firebaseArray', function($firebaseObject, $firebaseArray){
 		var connection = {};
 
+		connection.getAllMeetings = function(){
+			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings";
+			var ref = new Firebase(url);
+			return $firebaseArray(ref);
+			//return ref;
+
+		}
 		connection.newMeeting = function(meeting){
 			console.log(meeting);
 			var fireBase = new Firebase("https://sweltering-fire-6088.firebaseIO.com/meetings");
-			var datapush = fireBase.push(meeting);
-			var meetingID = datapush.key();
-			console.log(meetingID);
+			//var datapush = fireBase.push(meeting);
+			//var meetingID = datapush.key();
+			//console.log(meetingID);
 
-			return meetingID;
+			return fireBase.push(meeting);
 		}
 
 		connection.getMeeting = function(meetingID){

@@ -1,10 +1,12 @@
 angular.module('SimpleNotes')
 	.config(function($routeProvider){
-		$routeProvider.when('/meeting',{
-			templateUrl: '/templates/pages/meeting-overview.html'
+		$routeProvider.when('/meeting/:meetingID',{
+			templateUrl: '/templates/pages/meeting-overview.html',
+			controller: 'MeetingOverviewController'
 		})
-		.when('/editNotes',{
-			templateUrl: '/templates/pages/edit-meeting-notes.html'
+		.when('/editNote',{ // /meeting/:meetingID/editNote/:noteID/
+			templateUrl: '/templates/pages/edit-meeting-notes.html',
+			controller: 'editNoteController'
 		})
 		.when('/editMeeting/:meetingID',{
 			templateUrl: '/templates/pages/edit-meeting.html',

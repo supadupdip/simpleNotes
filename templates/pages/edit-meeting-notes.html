@@ -1,63 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-  <link rel="stylesheet" type="text/css" media="screen,projection" href="http://supadupdip.com/sup/materialize/css/materialize.css" />
-  <meta charset="utf-8">
-  <title>JS Bin</title>
-</head>
-<body ng-app="supnotes">
-  <nav class="orange darken-4" role="navigation">
-    <div class="container">
-      <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo left-align">Sup Notes <i class="mdi-action-speaker-notes"></i></a>
-        <ul id="nav-mobile" class="right side-nav">
-          <li><a href="#">Meetings</a></li>
-        </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      </div>
-    </div>
-  </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
       <div class="row">
-        <h3 class="header left orange-text">Meeting Title</h3>
-      </div>
-      <div class="row">
-        <div class="col s12 m8">
-                <div class="row">
+        <div class="col s12 m9">
+          <h3 class="header left orange-text">Meeting Title</h3>
+        </div>
+        <div class="col s12 m3">
                   <div class="input-field col s12">
-                    <input id="startDate" type="date" class="datepicker">
-                    <label for="startDate">Date of Meeting</label>
+                    <input id="startDate" type="date" class="datepicker" ng-model="note.meetingDate" jsondate>
+                    <label for="startDate" class="active">Date of Meeting</label>
                   </div>
-                </div>
           </div>
-
       </div>
       <div class="row">
         <div class="col s12 m9 l9">
             <div class="row">
               <div class="col s12">
-                <ul class="tabs">
+                <ul class="tabs" materialtabs>
                   <li class="tab col s3"><a href="#test1" class="active"><i class="mdi-content-add-circle-outline"></i> Notes</a></li>
                   <li class="tab col s3"><a href="#test2"><i class="mdi-editor-format-list-bulleted"></i> Outline</a></li>
-                  <li class="tab col s3"><a href="#test3"><i class="mdi-image-movie-creation
-"></i> Action Items</a></li>
+                  <li class="tab col s3"><a href="#test3"><i class="mdi-image-movie-creation"></i> Action Items</a></li>
                 </ul>
               </div>
-              <div id="test1" class="col s12 note-area" ng-controller="NoteController as notes">
-                <div class="card" ng-repeat="anote in notes.note">
+              <div id="test1" class="col s12 note-area">
+                <div class="card" ng-repeat="anote in note.noteCards">
                     <div class="card-content">
                       <div class="row">
+                        <button class="right" ng-click="removeNoteCard(anote)"><i class="mdi-content-remove-circle-outline"></i></button>
                         <span class="card-title">
                                   <div class="input-field col s12">
-                                    <input id="topic" type="text" class="validate black-text" value="{{anote.topicTitle}}">
-                                    <label for="topic">Topic Title</label>
+                                    <input type="text" class="validate black-text" value="{{anote.topicTitle}}">
+                                    <label class="active">Topic Title</label>
                                   </div>
                         </span>
                       </div>
                     <div class="row card-body">
                           <div class="input-field col s12">
                             <textarea class="materialize-textarea">{{anote.topicDetails}}</textarea>
-                            <label>Details</label>
+                            <label class="active">Details</label>
                           </div>
                     </div>
                     </div>
@@ -66,35 +43,38 @@
                       <div ng-repeat="actionItem in anote.actionItems">
                             <div class="input-field col s12">
                               <i class="mdi-toggle-check-box-outline-blank prefix orange-text" ng-hide="actionItem.complete"></i>
-                              <input id="icon_prefix" type="text" class="validate" value="{{actionItem.details}}">
+                              <input type="text" class="validate" value="{{actionItem.details}}">
                             </div>
                       </div>
                     <!-- Input field used to add new action item to note card -->
                      <div class="input-field col s12">
                       <i class="mdi-content-add prefix"></i>
-                      <input id="icon_prefix" type="text" class="validate" placeholder="Add Action Item">
+                      <input type="text" class="validate" placeholder="Add Action Item">
                       
                     </div>
                     </div>
                   </div>
                   <!-- End of one card -->
                   <div class="row center-align">
-                    <a class="waves-effect waves-light btn">Add Topic <i class="mdi-content-add right"></i></a>
+                    <a class="waves-effect waves-light btn" ng-click="addNoteCard()">Add Topic <i class="mdi-content-add right"></i></a>
                   </div>
               </div>
-              <div id="test2" class="col s12" ng-controller="TopicController as topics">
+              <div id="test2" class="col s12">
                 <!-- This is the tab container for the topic view -->
                       <ul class="collection with-header">
-        <li class="collection-item"  ng-repeat="topic in topics.note"><div>{{topic.topicTitle}}<a href="#!" class="secondary-content"><i class="mdi-action-swap-vert"></i></a></div></li>
-
-                    </ul>
+                        <li class="collection-item"  ng-repeat="topic in topics.note">
+                          <div>
+                            {{topic.topicTitle}}<a href="#!" class="secondary-content"><i class="mdi-action-swap-vert"></i></a>
+                          </div>
+                        </li>
+                      </ul>
                 
               </div>
-              <div id="test3" class="col s12" ng-controller="ActionController as topics">Test 3
+              <div id="test3" class="col s12">Test 3
               <!-- Here is the action Item view -->
                 <ul class="collection">
                   <li class="collection-item avatar" ng-repeat="topic in topics.note">
-                    <img src="images/yuna.jpg" alt="" class="circle">
+                    <i class="mdi-action-today circle grey darken-1"></i>
                     <span class="title">{{topic.topicTitle}}</span>
                     <ul ng-show="topic.actionItems">
                       <li ng-repeat="action in topic.actionItems">{{action.details}}</li>
@@ -116,7 +96,7 @@
                   </div>
                   <div class="row hide-on-small-only" style="height: 35px"></div>
                   <div class="row">
-                    <ul class="collection with-header" ng-controller="AttendeeController as attendees">
+                    <ul class="collection with-header">
                             <li class="collection-header"><h5><i class="mdi-action-perm-contact-cal"></i> Attendees</h5></li>
                       <li class="collection-item" ng-repeat="person in attendees.attendees">{{person.name}}</li>      
    
@@ -136,60 +116,4 @@
 
       </div>
 
-    </div>
-  </div>
 
-
-  <div class="container">
-    <div class="section">
-
-
-    </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-  </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-  
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://supadupdip.com/sup/materialize/js/materialize.js"></script>  
-</body>
-</html>

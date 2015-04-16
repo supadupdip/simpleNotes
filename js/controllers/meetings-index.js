@@ -1,8 +1,36 @@
-var meetings = 
 
 angular.module('SimpleNotes')
-	.controller('MeetingsIndexController', function($http, $scope){
-		var controller = this;
+	.controller('MeetingsIndexController',['$http', '$scope', 'meetingFactory', 'connectionFactory', function($http, $scope, meetingFactory, connectionFactory){
+		
+		$scope.page = {};
+		$scope.page.loading = true;
+		$scope.page.updating = false;
+		$scope.page.error = false;
+
+
+		var response = connectionFactory.getAllMeetings();
+
+			response.success = false;
+		     response.$loaded().then(function() {
+		        console.log("loaded record:", response);
+		        response.success = true;		        
+		        $scope.page.loading = false;
+		        if(response.length){
+					$scope.meetings = response;
+		        }
+		        else{
+		        	//the item was not found
+		        	$scope.page.error = true;
+		        	$scope.page.errorMessage = "The item you're looking for doesn't seem to exist";
+		        }
+		        
+
+
+		     }).catch(function(error){
+		     	$scope.page.error = true;
+		     	$scope.page.errorMessage = error;
+		     	alert('There was an error fetching data');
+		     });
 		/*
 		$http({method: 'GET', url:'/json/meetings.js'})
 			.success(function(data){
@@ -12,78 +40,5 @@ angular.module('SimpleNotes')
 				console.log(err);
 			})
 			;*/
-		$scope.meetings = [
-	{
-		ID:"1",
-		Title: "Box IA",
-		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
-		startDate: "",
-		hour: "",
-		minute: "",
-		meridian: "",
-		recurring: true,
-		occursEvery: "Occurs every Tue. 1300 hrs",
-		organizer: "Carlos Gonzalez",
-		dialIn: "555-555-5555",
-		dcsLink: "http://somelink.here/andid",
-        status: "active",
-		cardColor: "light-blue darken-1",
-		cardIcon: "mdi-action-lock",
-		cardIconColor: "black-text"
-	},
-	{
-		ID:"2",
-		Title: "EFB MCM",
-		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
-		startDate: "",
-		hour: "",
-		minute: "",
-		meridian: "",
-		recurring: true,
-		occursEvery: "Occurs every Tue. 1300 hrs",
-		organizer: "Carlos Gonzalez",
-		dialIn: "555-555-5555",
-		dcsLink: "http://somelink.here/andid",
-        status: "",
-		cardColor: "lime",
-		cardIcon: "mdi-action-lock",
-		cardIconColor: "white-text"
-	},
-		{
-		ID:"3",
-		Title: "Box PM",
-		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
-		startDate: "",
-		hour: "",
-		minute: "",
-		meridian: "",
-		recurring: true,
-		occursEvery: "Occurs every Tue. 1300 hrs",
-		organizer: "Carlos Gonzalez",
-		dialIn: "555-555-5555",
-		dcsLink: "http://somelink.here/andid",
-        status: "",
-		cardColor: "light-blue darken-1",
-		cardIcon: "mdi-action-lock",
-		cardIconColor: "black-text"
-	},
-		{
-		ID:"4",
-		Title: "Mobility Pilots",
-		description: "Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.",
-		startDate: "",
-		hour: "",
-		minute: "",
-		meridian: "",
-		recurring: true,
-		occursEvery: "Occurs every Tue. 1300 hrs",
-		organizer: "Carlos Gonzalez",
-		dialIn: "555-555-5555",
-		dcsLink: "http://somelink.here/andid",
-        status: "",
-		cardColor: "lime",
-		cardIcon: "mdi-action-lock",
-		cardIconColor: "white-text"
-	},
-];
-	});
+
+	}]);

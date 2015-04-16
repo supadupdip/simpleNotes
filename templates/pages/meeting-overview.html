@@ -1,0 +1,79 @@
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div class="card-panel left-align {{meeting.cardColor}} {{meeting.cardIconColor}}">
+          <h3 class="header"><i class="{{meeting.cardIcon}}"></i>  {{meeting.Title}}</h3>
+          <p ng-show="meeting.recurring">Occurs every {{meeting.occursEvery}} <i class="mdi-device-access-time"></i> {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}<br/>
+          <i class="mdi-maps-local-phone"></i> {{meeting.dialIn}}  |  <i class="mdi-notification-voice-chat"></i> {{meeting.dcsLink}}</p>
+          <p ng-show="!meeting.recurring"> {{meeting.startDate | date:mm/dd/yyyy}} <i class="mdi-device-access-time"></i> {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}<br/>
+          <i class="mdi-maps-local-phone"></i> {{meeting.dialIn}}  |  <i class="mdi-notification-voice-chat"></i> {{meeting.dcsLink}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div class="card-panel left-align">
+          <div class="row">
+            <div class="col s12">
+              <ul class="tabs" materialtabs>
+                <li class="tab col s3"><a class="active" href="#notes">Notes</a></li>
+                <li class="tab col s3"><a href="#action">Action Items</a></li>
+                <li class="tab col s3"><a href="#participants">Participants</a></li>
+              </ul>
+            </div>
+            <div id="notes" class="col s12">
+              <!--
+                <div class="collection">
+                  <a href="#!" class="collection-item">4/8/2015</a>
+                  <a href="#!" class="collection-item active">April 8, 2015</a>
+                  <a href="#!" class="collection-item">8 April 2015</a>
+                  <a href="#!" class="collection-item">Alvin</a>
+                </div>-->
+
+
+                <!-- Second Example -->
+                <ul class="collection">
+                  <li class="collection-item avatar">
+                    <i class="mdi-file-today circle grey lighten-2"></i>
+                    <span class="title"><a href="#!">4/8/2015</a></span>
+                    <p><a href="#!" favoritenote>Quick View <i class="mdi-action-search"></i></a></p>
+                    <a href="#!" class="secondary-content tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Edit Meeting"><i class="small mdi-action-grade"></i></a>
+                  </li>
+                  <li class="collection-item avatar">
+                    <i class="mdi-action-today circle grey darken-1"></i>
+                    <span class="title">April 8, 2015</span>
+                    <p>First Line <br>
+                       Second Line
+                    </p>
+                    <a href="#!" class="secondary-content tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Edit Meeting"><i class="mdi-action-grade"></i></a>
+                  </li>
+                  <li class="collection-item avatar">
+                    <i class="mdi-av-play-arrow circle red"></i>
+                    <span class="title">8 April 2015</span>
+                    <p>First Line <br>
+                       Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                  </li>
+                </ul>
+            </div>
+            <div id="action" class="col s12">Test 2</div>
+            <div id="participants" class="col s12">Test 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+ <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Options">
+      <i class="large mdi-navigation-more-vert"></i>
+    </a>
+    <ul>
+      <li><a class="btn-floating yellow darken-1 tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Share Meeting"><i class="large mdi-social-share"></i></a></li>
+      <li><a class="btn-floating green tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Edit Meeting"><i class="large mdi-editor-mode-edit"></i></a></li>
+      <li><a class="btn-floating blue"><i class="large mdi-content-add"></i></a></li>
+    </ul>
+  </div>
+
+  

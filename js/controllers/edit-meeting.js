@@ -69,15 +69,6 @@ angular.module('SimpleNotes')
 		};
 
 	}])
-	.directive('hastooltip',function(){
-		return{
-			restrict: 'A',
-			link: function($scope, $element, $attrs){
-				$element.tooltip({delay: 50});
-			}
-		}
-
-	})
 	.directive('modalTrigger', function(){
 		return{
 			restrict: 'A',

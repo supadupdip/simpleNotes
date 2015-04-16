@@ -4,7 +4,7 @@ angular.module('SimpleNotes')
 			restrict: 'E',
 			templateUrl: '/templates/directives/meeting-card.html',
 			controller: function($scope){
-
+				
 			}
 		};
 	});

@@ -10,9 +10,17 @@ angular.module('SimpleNotes')
 
 		$scope.save = function(meeting){
 			
-			var meetingID = connectionFactory.newMeeting(meeting);
-			console.log(meetingID);
-			//window.location('/editMeeting/meetingID'+meetingID);
+			var response = connectionFactory.newMeeting(meeting);
+			var newID = response.key();
+			if(newID){
+				alert('New meeting was created with ID'+newID);
+				//window.location('/editMeeting/meetingID'+meetingID);
+			}
+			else{
+				alert('There was an error creating the ')
+			}
+			console.log(newID);
+			
 			
 			/*
 			$http({method: 'POST', url:'/json'})

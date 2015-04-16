@@ -1,78 +1,36 @@
-<br><br>
+<div ng-show="page.loading" class="center-align">
+  <div preloader></div>
+</div>
+<div ng-show="page.error">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title black-text">Uh Oh!</span>
+              <p>{{page.errorMessage}}</p>
+            </div>
+            <div class="card-action">
+              <a href='#' ng-click="Cancel()">Go Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div ng-hide="page.error && page.loading">
       <h1 class="header center orange-text">Existing Meetings</h1>
+      <div class="row">
+        <div class="right">
+          <a href="#!" class="orange-text"><i class="mdi-action-view-module"> Grid View</i></a> |
+          <a href="#!" class="orange-text"><i class="mdi-action-view-list"> List View</i></a>
+        </div>
+      </div>
+      <div class="divider"></div>
       <div class="row">
         <div class="col s12 m4" ng-repeat="meeting in meetings">
 
                 <meeting-card></meeting-card>
-              <!-- Commenting out the first instance of the cards
-                <div class="card">
-                  <div class="card-image waves-effect waves-block waves-light center-align light-blue darken-1">
-                    <i class="large mdi-action-lock"></i>
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">BOX IA <i class="mdi-navigation-more-vert right"></i></span>
-                    
-                    <p>Occurs every Tue. 1300 hrs</p>
-                    <p><a href="#">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
-                  </div>
-                  <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Box IA <i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on. Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-                </div> -->
-          </div>
-        <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image waves-effect waves-block waves-light center-align light-blue darken-1">
-                    <i class="large mdi-file-cloud"></i>
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">EFB MCM<i class="mdi-navigation-more-vert right"></i></span>
-                    
-                    <p>Occurs every Wed. 1200 hrs</p>
-                    <p><a href="#">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
-                  </div>
-                  <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">EFB MCM<i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-                </div>
-          </div>
-        <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image waves-effect waves-block waves-light center-align light-blue darken-1">
-                    <i class="large mdi-action-lock"></i>
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">BOX PM<i class="mdi-navigation-more-vert right"></i></span>
-                    <p>Occurs every Thurs. 1100 hrs</p>
-                    <p><a href="#">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
-                  </div>
-                  <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Box IA Meeting <i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-                </div>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image waves-effect waves-block waves-light center-align light-blue darken-1">
-                    <i class="large mdi-action-lock"></i>
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Mobility Pilots<i class="mdi-navigation-more-vert right"></i></span>
-                    <p>Thurs. 2/1/15 1100 hrs</p>
-                    <p><a href="#">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
-                  </div>
-                  <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">MObility Pilots <i class="mdi-navigation-close right"></i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-                </div>
-          </div>
-      </div>
+        </div>
+
       <br><br>
     <div class="section">
 
@@ -107,3 +65,4 @@
       </div>
 
     </div>
+</div>
