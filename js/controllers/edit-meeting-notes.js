@@ -26,6 +26,7 @@ angular.module('SimpleNotes')
 							ID: "1",
 							meetingID: "1",
 							meetingDate: "",
+							attendees: [],
 							noteCards: [
 								{
 									topicTitle: "First topic",
@@ -94,9 +95,10 @@ angular.module('SimpleNotes')
 		     });
 		*/
 		$scope.addNoteCard = function(){
-			var blankCard = new meetingFactory.getNoteCard();
-			var blankActionItem = meetingFactory.getActionItem();
+			var blankCard = meetingFactory.getNoteCard();
+			//var blankActionItem = meetingFactory.getActionItem();
 			//blankCard.actionItems.push(blankActionItem);
+			//var blankCard = {};
 			$scope.note.noteCards.push(blankCard);
 		};
 
@@ -140,7 +142,136 @@ angular.module('SimpleNotes')
 			//We also delete any meeting notes associated with this meeting
 		};
 
-	}]);
+		$scope.undoAttendee = function(){
+			console.log('attempting undo');
+		};
+
+	}])
+	.directive('actionItemInput',function(){
+		return{
+			restrict: 'A',
+			require: 'ngModel',
+			link: function($scope, $element, $attrs, ngModelCtrl){
+				$element.bind("keyup", function (event){
+					if(event.which === 13){
+						var newItem = {
+							complete: false,
+							mentions: ""
+						};
+						console.log('There was an enter key', $scope.newActionItem);
+						console.log($scope);
+						newItem.details = $scope.newActionItem;
+						$scope.anote.actionItems.push(newItem);
+						$scope.newActionItem = null;
+						var target = event.target;
+						target.focus();
+						$scope.$apply();
+					}
+				});
+
+			}
+		}
+	})
+	.directive('noLink',function(){
+		return{
+			restrict: 'A',
+			priority: 1,
+			link: function($scope, $element, $attrs){
+				$element.bind("click", function (event){
+					event.preventDefault();
+				});
+
+			}
+		}
+	})
+	.directive('editableActionItem',function(){
+		return{
+			restrict: 'A',
+			link: function($scope, $element, $attrs){
+				$element.bind("mouseenter", function (event){
+					$element.find('.removeActionItem').removeClass('hide');
+				});
+				$element.bind("mouseleave", function (event){
+					$element.find('.removeActionItem').addClass('hide');
+				});
+			},
+			controller: function($scope){
+				console.log('Logging from within editable aciton item');
+
+				$scope.removeActionItem = function(actionItem){
+					console.log('We are trying to remove an action item');
+					console.log(actionItem);
+					console.log($scope);
+					var index = $scope.$parent.anote.actionItems.indexOf(actionItem);
+					$scope.$parent.anote.actionItems.splice(index, 1);
+				};
+
+				$scope.toggleComplete = function(actionItem){
+					if(actionItem.complete){
+						//Set it as incomplete
+						actionItem.complete = false;
+					}
+					else{
+						//Set action item as complete
+						actionItem.complete = true;
+					}
+				}
+			}
+		}
+	})
+	.directive('participantInput',function(){
+		return{
+			restrict: 'A',
+			require: 'ngModel',
+			link: function($scope, $element, $attrs, ngModelCtrl){
+				$element.bind("keyup", function (event){
+					if(event.which === 13){
+						var newItem = {
+							name: null,
+							email: '',
+							account: ''
+						};
+						newItem.name = $scope.newParticipant;
+						$scope.note.attendees.push(newItem);
+						$scope.newParticipant = null;
+						var target = event.target;
+						target.focus();
+						$scope.$apply();
+					}
+				});
+
+			}
+		}
+	})
+		.directive('meetingAttendee',function(){
+		return{
+			restrict: 'A',
+			link: function($scope, $element, $attrs){
+				$element.bind("mouseenter", function (event){
+					$element.find('.removeAttendee').removeClass('hide');
+				});
+				$element.bind("mouseleave", function (event){
+					$element.find('.removeAttendee').addClass('hide');
+				});
+			},
+			controller: function($scope){
+				$scope.lastRemoved = [];
+
+				$scope.removeAttendee = function(attendee){
+					var index = $scope.note.attendees.indexOf(attendee);
+					$scope.lastRemoved.push(attendee);
+					Materialize.toast("<span>"+attendee.name+" removed </span><button ng-click='undoAttendee()' class='btn-flat yellow-text'>Undo<button>", 60000);
+					$scope.note.attendees.splice(index, 1);
+
+				};
+
+				$scope.editAttendee = function(attendee){
+
+				}
+			}
+		}
+	})		
+	;
 
 
 

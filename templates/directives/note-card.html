@@ -1,0 +1,39 @@
+                <div class="card">
+                    <div class="card-content">
+                      <div class="row">
+                        <a no-link class="right removeCard hide" ng-click="removeNoteCard(anote)" href="#"><i class="mdi-navigation-close grey-text"></i></a>
+                        <span class="card-title">
+                                  <div class="input-field col s12">
+                                    <input type="text" class="validate black-text" ng-model="anote.topicTitle" style="font-weight: normal;">
+                                    <label class="active">Topic Title</label>
+                                  </div>
+                        </span>
+                      </div>
+                    <div class="row card-body">
+                          <div class="input-field col s12">
+                            <textarea class="materialize-textarea" ng-model="anote.topicDetails"></textarea>
+                            <label class="active">Details</label>
+                          </div>
+                    </div>
+                    </div>
+                    <div class="card-action">
+                      <p class="action-title">Action Items</p>
+                      <div ng-repeat="actionItem in anote.actionItems">
+                            <div class="input-field col s12" editable-action-item>
+                              <a href="#" no-link ng-click="toggleComplete(actionItem)" class="prefix">
+                                <i class="mdi-toggle-check-box prefix green-text" ng-show="actionItem.complete"></i>
+                                <i class="mdi-toggle-check-box-outline-blank prefix orange-text" ng-hide="actionItem.complete"></i>
+                              </a>
+                              <input type="text" class="validate hassufix" ng-model="actionItem.details">
+                              <a href="#" no-link ng-click="removeActionItem(actionItem)" class="sufix removeActionItem hide"><i class="mdi-navigation-close grey-text"></i></a>
+                            </div>
+                      </div>
+                    <!-- Input field used to add new action item to note card -->
+                     <div class="input-field col s12">
+
+                      <i class="mdi-content-add prefix"></i>
+                      <input type="text" class="validate" action-item-input ng-model="newActionItem" placeholder="Add Action Item">
+                      
+                    </div>
+                    </div>
+                  </div>

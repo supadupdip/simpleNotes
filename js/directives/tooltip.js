@@ -12,6 +12,7 @@ angular.module('SimpleNotes')
 					delay: delay,
 					tooltip: text
 				});
+
 				//console.log($element);
 			}
 		}
