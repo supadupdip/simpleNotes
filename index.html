@@ -12,7 +12,7 @@
 <body>
   <nav class="orange darken-4 z-depth-1" role="navigation">
     <div class="container">
-      <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo left-align">Simple Notes <i class="mdi-action-speaker-notes"></i></a>
+      <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo left-align">Simple Notes <i class="mdi-action-speaker-notes right"></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
@@ -27,7 +27,7 @@
 
 
   <div class="container" id="mainWraper">
-    <div ng-view></div>
+    <div ng-view autoscroll="true"></div>
 
   </div>
 
@@ -66,8 +66,13 @@
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <!--<script src="js/main-init.js"></script>-->
+  <!--
   <script type="text/javascript" src="js/angular.min.js"></script>
   <script type="text/javascript" src="js/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/angular-animate.min.js"></script>-->
+      <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
