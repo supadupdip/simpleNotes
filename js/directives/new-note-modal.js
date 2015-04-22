@@ -4,7 +4,7 @@ angular.module('SimpleNotes')
 			restrict: 'A',
 			replace: true,
 			priority: 1,
-			templateUrl: '/templates/directives/new-note-modal.html',
+			templateUrl: 'templates/directives/new-note-modal.html',
 			link: function($scope, $element, $attrs){
 
 			},
