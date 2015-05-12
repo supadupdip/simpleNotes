@@ -8,20 +8,28 @@ angular.module('SimpleNotes')
 			console.log(meeting);
 		};
 
+		$scope.back = function(){
+			
+			if(window.history.length){
+				window.history.back();
+			}
+			else{
+				window.location.href = '#/';
+			}
+		};
+
 		$scope.save = function(meeting){
 			
 			var response = connectionFactory.newMeeting(meeting);
 			var newID = response.key();
 			if(newID){
-				alert('New meeting was created with ID'+newID);
-				//window.location('/editMeeting/meetingID'+meetingID);
+				//alert('New meeting was created with ID'+newID);
+				window.location.href = '#/meeting/'+newID;
 			}
 			else{
-				alert('There was an error creating the ')
+				alert('There was an error creating the meeting')
 			}
-			console.log(newID);
-			
-			
+						
 			/*
 			$http({method: 'POST', url:'/json'})
 				.catch(function(meeting){

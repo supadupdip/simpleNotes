@@ -3,8 +3,22 @@
       <h4>New Note</h4>
       <p>Here we will be able to launch new modals</p>
     </div>
+    <div class="row">
+      <select class="browser-default" ng-model="newNote.meeting">
+        <option ng-repeat="meeting in meetings">{{meeting.Title}}</option>
+      </select>
+    </div>
+    <div class="row">
+      <label style="padding-left: 15px;" for="startDate">Start Date</label>
+      <div class="input-field col s12">
+
+        <!-- Changed this div from an input 
+        <input datepicker datepicker-format="d mmmm, yyyy" id="startDate" type="date" class="datepicker" ng-model="meeting.startDate">-->
+        <input jsondate id="meetingDate" type="date" name="meetingdate" ng-model="newNote.meetingDate" required>
+      </div>
+    </div>
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Create</a>
+      <a href="#!" no-link class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="#!" no-link class="modal-action modal-close waves-effect waves-green btn-flat">Create</a>
     </div>
   </div>

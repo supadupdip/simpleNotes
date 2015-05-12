@@ -5,9 +5,17 @@ angular.module('SimpleNotes')
 			require: 'ngModel',
 			link: function($scope, $element, $attrs, ngModelCtrl){
 				 var parser = function(date){
-					 	console.log('running when date is set', date);
-					 	var jsonDate = date.toJSON();
-					 	return jsonDate;
+					 	//debugger ;
+					 	//console.log('running when date is set', date);
+					 	
+					 	if(jsonDate instanceof Date){
+						 	var jsonDate = date.toJSON();
+						 	return jsonDate;	
+					 	}
+					 	else{
+					 		return date;
+					 	}
+					 	
 				 }
 				 ngModelCtrl.$parsers.push(parser);
 

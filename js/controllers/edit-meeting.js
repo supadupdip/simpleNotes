@@ -78,4 +78,18 @@ angular.module('SimpleNotes')
 				});
 			}
 		}
-	});
+	})
+	.directive('newNoteTrigger', function(){
+		return{
+			restrict: 'A',
+			link: function($scope, $element, $attrs){
+				$element.leanModal({
+					ready: function(){
+						alert('hiiiiiii');
+						$scope.getstarted();
+					}
+				});
+			}
+		}
+	})
+	;

@@ -104,36 +104,7 @@
                   <h5 class="header left orange-text">Customize Appearance</h5>
                 </div>
                 <card-selects></card-selects>
-                <!--
-                <div class="row">
-                    <div class="col s12 m12">
-                      <label>Card Background</label>
-                        <select id="cardBackground" class="browser-default" ng-model="meeting.cardColor">
-                          <option value="" disabled selected>Choose your color</option>
-                          <option value="light-blue darken-1">Light Blue</option>
-                          <option value="cyan darken-1">Cyan</option>
-                          <option value="teal darken-1">Teal</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                      <label>Card Icon</label>
-                        <select id="cardIcon" class="browser-default" ng-model="meeting.cardIcon">
-                          <option value="" disabled selected>Choose your icon</option>
-                          <option value="mdi-social-people">People</option>
-                          <option value="mdi-action-lock">Lock</option>
-                          <option value="mdi-file-cloud">Cloud</option>
-                        </select>
-                    </div>
-                    <div class="col s12 m6">
-                      <label>Card Icon Color</label>
-                        <select id="cardBackground" class="browser-default" ng-model="meeting.cardIconColor">
-                          <option value="white-text" selected>White</option>
-                          <option value="black-text">Black</option>
-                        </select>
-                    </div>
-                </div>-->
+
                 <div class="row">
                   <h5>Live Preview</h5>
                   <div class="col s12 m12">
@@ -143,7 +114,7 @@
                 </div>
 
                 <div class="row right-align">
-                      <button class="waves-effect waves-orange btn-flat" ng-click="logIt(meeting)">Cancel</button>
+                      <button class="waves-effect waves-orange btn-flat" ng-click="back()">Cancel</button>
                       <button class="btn waves-effect waves-light orange darken-4" ng-disabled="newMeeting.$invalid" ng-click="save(meeting)" name="action">Create
                         <i class="mdi-content-add right"></i>
                       </button>

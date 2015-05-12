@@ -12,12 +12,21 @@
 <body>
   <nav class="orange darken-4 z-depth-1" role="navigation">
     <div class="container">
-      <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo left-align">Simple Notes <i class="mdi-action-speaker-notes right"></i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <div class="nav-wrapper">
+          <a id="logo-container" href="#" class="brand-logo left-align hide-on-small-only">Simple Notes <i class="mdi-action-speaker-notes right"></i></a>
+          <a id="logo-container" href="#" class="brand-logo center-align hide-on-med-and-up"><i class="mdi-action-speaker-notes right"></i></a>
+      <a href="#" top-nav no-link data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu" ></i></a>        
+        <ul id="top-nav" class="right hide-on-med-and-down">
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
-          <li><a class="modal-trigger" href="#newNote" modal-trigger><i class="mdi-content-add left"></i>New Note</a></li>
-        </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <li><a class="modal-trigger" href="#newNote" id="newNote" no-link><i class="mdi-content-add left"></i>New Note</a></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#" class="orange-text">Simple Notes <i class="mdi-action-speaker-notes right"></i></a></li>
+          <li><a href="#">Meetings</a></li>
+          <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
+          <li><a class="modal-trigger" href="#newNote" id="newNote" no-link><i class="mdi-content-add left"></i>New Note</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -89,6 +98,7 @@
   <script type="text/javascript" src="js/controllers/edit-meeting-notes.js"></script>
 
   <!-- Directives -->
+  <script type="text/javascript" src="js/directives/navbar.js"></script>
   <script type="text/javascript" src="js/directives/meeting-card.js"></script>
   <script type="text/javascript" src="js/directives/note-card.js"></script>
   <script type="text/javascript" src="js/directives/card-selects.js"></script>
@@ -96,7 +106,11 @@
   <script type="text/javascript" src="js/directives/preloader.js"></script>
   <script type="text/javascript" src="js/directives/tooltip.js"></script>  
   <script type="text/javascript" src="js/directives/new-note-modal.js"></script>
-
+  <script type="text/javascript" src="js/directives/actioniteminput.js"></script>
+  <script type="text/javascript" src="js/directives/noLink.js"></script>
+  <script type="text/javascript" src="js/directives/editableActionItem.js"></script>
+  <script type="text/javascript" src="js/directives/participantInput.js"></script>
+  <script type="text/javascript" src="js/directives/meetingAttendee.js"></script>
 
 
   </body>
