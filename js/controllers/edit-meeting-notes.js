@@ -77,7 +77,7 @@ angular.module('SimpleNotes')
 		        console.log("loaded note record:", response);
 		        response.success = true;		        
 		        $scope.page.loading = false;
-		        if(response.Title){
+		        if(response.meeting){
 					$scope.note = response;
 		        }
 		        else{
@@ -92,10 +92,12 @@ angular.module('SimpleNotes')
 		     });
 		
 		$scope.addNoteCard = function(){
-			var blankCard = meetingFactory.getNoteCard();
-			//var blankActionItem = meetingFactory.getActionItem();
-			//blankCard.actionItems.push(blankActionItem);
-			//var blankCard = {};
+			var blankCard = new meetingFactory.getNoteCard();
+			//Check that the noteCards property exsits
+			//This is necessary for FireBase which wont let you save a blank array
+			if(!$scope.note.noteCards){
+				$scope.note.noteCards= [];
+			}
 			$scope.note.noteCards.push(blankCard);
 		};
 

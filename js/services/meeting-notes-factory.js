@@ -1,42 +1,5 @@
 angular.module('SimpleNotes')
 	.factory('meetingFactory', function(){
-		var meeting= {
-			Title: null,
-			meetingTitle: null,
-			description: null,
-			startDate: new Date(),
-			hour: null,
-			minute: null,
-			meridian: null,
-			recurring: null,
-			occursEvery: null,
-			organizer: null,
-			dialIn: null,
-			dcsLink: null,
-			cardIcon: 'mdi-social-people',
-			cardIconColor: 'white-text',
-			cardColor: 'light-blue darken-1',
-			meetingActive: true,
-			participants:[]
-		}
-
-		var note={
-			meetingID: null,
-			meetingDate: new Date(),
-			noteCards: [],	
-		}
-		
-		var noteCard={
-			topicTitle: null,
-			topicDetails : null,
-			actionItems : []
-		}
-
-		var actionItem = {
-			complete: false,
-			details: null,
-			mentions: []
-		}
 
 		var participant = {
 
@@ -45,17 +8,51 @@ angular.module('SimpleNotes')
 		var myFactory = {};
 
 		myFactory.getMeeting = function(){
+			var meeting= {
+				Title: null,
+				meetingTitle: null,
+				description: null,
+				startDate: new Date(),
+				hour: null,
+				minute: null,
+				meridian: null,
+				recurring: null,
+				occursEvery: null,
+				organizer: null,
+				dialIn: null,
+				dcsLink: null,
+				cardIcon: 'mdi-social-people',
+				cardIconColor: 'white-text',
+				cardColor: 'light-blue darken-1',
+				meetingActive: true,
+				participants:[]
+			};
 			return meeting;
 		}
 
 		myFactory.getNote = function(){
+			var note={
+				meetingID: null,
+				meetingDate: new Date(),
+				//noteCards: [],	//Need to comment this out for FireBase
+			}
 			return meetingNote;
 		}
 
 		myFactory.getNoteCard = function(){
+			var noteCard= {
+				topicTitle: null,
+				topicDetails : null,
+				actionItems : []
+			}
 			return noteCard;
 		}
 		myFactory.getActionItem = function(){
+			var actionItem={
+				complete: false,
+				details: null,
+				mentions: []
+			}			
 			return  actionItem;
 		}
 

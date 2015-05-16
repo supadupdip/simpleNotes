@@ -24,6 +24,8 @@ angular.module('SimpleNotes')
 					$scope.page.error = false;
 					$scope.newNote = {};
 					$scope.newNote.meetingDate = new Date();
+					$scope.newNote.participants = [];
+					$scope.newNote.noteCards = [];
 					var response = connectionFactory.getAllMeetings();
 					response.success = false;
 				     response.$loaded().then(function() {

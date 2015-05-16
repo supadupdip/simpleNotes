@@ -12,6 +12,10 @@ angular.module('SimpleNotes')
 							account: ''
 						};
 						newItem.name = $scope.newParticipant;
+						//Check to make sure the attendees property exists
+						if(!$scope.note.attendees){
+							$scope.note.attendees = [];
+						}
 						$scope.note.attendees.push(newItem);
 						$scope.newParticipant = null;
 						var target = event.target;
