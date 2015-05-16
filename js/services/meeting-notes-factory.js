@@ -100,6 +100,21 @@ angular.module('SimpleNotes')
 			
 
 		}
+		connection.newNote = function(noteInfo){
+			console.log('running the newNote function in the service',noteInfo);
+			var firebase = new Firebase("https://sweltering-fire-6088.firebaseIO.com/meetingNotes");
+
+			return firebase.push(noteInfo);
+		}
+
+		connection.getNote = function(noteID){
+			console.log('now getting note with ID', noteID);
+			var url = "https://sweltering-fire-6088.firebaseIO.com/meetingNotes/"+noteID;
+			var ref = new Firebase(url);
+			
+			return $firebaseObject(ref);
+		}
+
 
 		return connection;
 

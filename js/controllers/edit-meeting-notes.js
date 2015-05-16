@@ -1,12 +1,12 @@
 angular.module('SimpleNotes')
 	.controller('editNoteController',['$http', '$scope', '$routeParams', 'meetingFactory', 'connectionFactory', function($http, $scope, $routeParams, meetingFactory, connectionFactory){
 
-		var  meetingID = $routeParams.meetingID;
+		var  noteID = $routeParams.noteID;
 		$scope.page = {};
 		$scope.page.loading = true;
 		$scope.page.updating = false;
 		$scope.page.error = false;
-
+		/*
 		$scope.meeting ={
 			Title: 'Box IA Sync',
 			participants: 	[
@@ -69,31 +69,28 @@ angular.module('SimpleNotes')
 							]
 						};
 		//$scope.meeting = meetingFactory.getMeeting();
-		/*
-		var response = connectionFactory.getMeeting(meetingID);
+		*/
+		var response = connectionFactory.getNote(noteID);
 
 			response.success = false;
 		     response.$loaded().then(function() {
-		        console.log("loaded record:", response);
+		        console.log("loaded note record:", response);
 		        response.success = true;		        
 		        $scope.page.loading = false;
 		        if(response.Title){
-					$scope.meeting = response;
+					$scope.note = response;
 		        }
 		        else{
 		        	//the item was not found
 		        	$scope.page.error = true;
 		        	$scope.page.errorMessage = "The item you're looking for doesn't seem to exist";
 		        }
-		        
-
-
 		     }).catch(function(error){
 		     	$scope.page.error = true;
 		     	$scope.page.errorMessage = error;
 		     	alert('There was an error fetching data');
 		     });
-		*/
+		
 		$scope.addNoteCard = function(){
 			var blankCard = meetingFactory.getNoteCard();
 			//var blankActionItem = meetingFactory.getActionItem();

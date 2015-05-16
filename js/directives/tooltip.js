@@ -7,7 +7,7 @@ angular.module('SimpleNotes')
 				var delay = $attrs.delay;
 				var text = $attrs.tooltip;
 				console.log(text);
-				$element.tooltip({
+				$('.tooltipped').tooltip({
 					position: pos,
 					delay: delay,
 					tooltip: text
