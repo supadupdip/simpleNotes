@@ -47,7 +47,8 @@ angular.module('SimpleNotes')
 			//var response = connectionFactory.updateMeeting(meetingID);
 
 			      meeting.$save().then(function() {
-			        alert('Profile saved to Firebase!');
+					Materialize.toast('Meeting Updated', 4000);
+					//window.location = "/meeting/"+meetingID;
 			      }).catch(function(error) {
 			        alert('Error!');
 			      });
@@ -60,36 +61,17 @@ angular.module('SimpleNotes')
 			//Once the user confirms we delete the meeting
 			meeting.$remove().then(function(ref) {
 			  // data has been deleted locally and in Firebase
-			  $('#itemDeleted').openModal();
-			  //window.location = "/";
+			  $('#itemDeleted').openModal({
+				  dismissible: false,
+				  complete: function(){
+					  //When the user dismissed the modal we navigate to the main page
+					  window.location = "/";
+				  }
+			  });
 			}, function(error) {
-			  console.log("Error:", error);
+			  alert('Something went wrong! Try again');
 			});
 			//We also delete any meeting notes associated with this meeting
 		};
 
-	}])
-	.directive('modalTrigger', function(){
-		return{
-			restrict: 'A',
-			link: function($scope, $element, $attrs){
-				$element.leanModal({
-
-				});
-			}
-		}
-	})
-	.directive('newNoteTrigger', function(){
-		return{
-			restrict: 'A',
-			link: function($scope, $element, $attrs){
-				$element.leanModal({
-					ready: function(){
-						alert('hiiiiiii');
-						$scope.getstarted();
-					}
-				});
-			}
-		}
-	})
-	;
+	}])	;

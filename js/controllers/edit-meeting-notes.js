@@ -115,12 +115,15 @@ angular.module('SimpleNotes')
 			}
 		};
 
-		$scope.Update = function(meeting){
+		$scope.Update = function(note){
 			$scope.page.updating = true;
 			//var response = connectionFactory.updateMeeting(meetingID);
+			      note.$save().then(function() {
+			        $scope.page.updating = false;
+			        //pop up a message that it saved succesfully!
+			        Materialize.toast('Note updated!', 4000) // 4000 is the duration of the toast
+			        //Also update the latest activity for this meeting
 
-			      meeting.$save().then(function() {
-			        alert('Profile saved to Firebase!');
 			      }).catch(function(error) {
 			        alert('Error!');
 			      });

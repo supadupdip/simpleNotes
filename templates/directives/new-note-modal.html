@@ -1,15 +1,16 @@
   <div id="newNote" class="modal">
     <div class="modal-content">
       <h4>New Note</h4>
-      <p>Here we will be able to launch new modals</p>
     </div>
+  <div class="container">
     <div class="row">
-      <select class="browser-default" ng-model="newNote.meeting">
+      <label>Select a Meeting</label>
+      <select class="browser-default" ng-model="newNote.meeting" required>
         <option ng-repeat="meeting in meetings">{{meeting.Title}}</option>
       </select>
     </div>
     <div class="row">
-      <label style="padding-left: 15px;" for="startDate">Start Date</label>
+      <label style="padding-left: 15px;" for="startDate">Meeting Date</label>
       <div class="input-field col s12">
 
         <!-- Changed this div from an input 
@@ -17,8 +18,10 @@
         <input jsondate id="meetingDate" type="date" name="meetingdate" ng-model="newNote.meetingDate" required>
       </div>
     </div>
+  </div>
     <div class="modal-footer">
-      <a href="#!" no-link class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-      <a href="#!" no-link class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="createNote(newNote)">Create</a>
+      <a href="#!" no-link class="btn modal-action modal-close  waves-effect waves-light orange darken-4" ng-disabled="newNote.$invalid" ng-click="createNote(newNote)">Create</a>      
+      <a href="#!" no-link class="modal-action modal-close waves-effect waves-gray btn-flat">Close</a>
+
     </div>
   </div>

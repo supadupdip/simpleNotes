@@ -8,6 +8,7 @@
   <!-- CSS  -->
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/supNotes.css" type="text/css" rel="stylesheet"/>
+  <link href="css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
   <nav class="orange darken-4 z-depth-1" role="navigation">
@@ -19,13 +20,13 @@
         <ul id="top-nav" class="right hide-on-med-and-down">
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
-          <li><a class="modal-trigger" href="#newNote" id="newNote" no-link><i class="mdi-content-add left"></i>New Note</a></li>
+          <li><a class="modal-trigger" href="#newNote" modal-trigger no-link><i class="mdi-content-add left"></i>New Note</a></li>
         </ul>
         <ul id="nav-mobile" class="side-nav">
           <li><a href="#" class="orange-text">Simple Notes <i class="mdi-action-speaker-notes right"></i></a></li>
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
-          <li><a class="modal-trigger" href="#newNote" id="newNote" no-link><i class="mdi-content-add left"></i>New Note</a></li>
+          <li><a class="modal-trigger" href="#newNote" modal-trigger no-link><i class="mdi-content-add left"></i>New Note</a></li>
         </ul>
       </div>
     </div>
@@ -45,8 +46,10 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">About</h5>
-          <p class="grey-text text-lighten-4">SimpleNotes is provided and developed by Infrastructure Services Development Knowledge Management Team. "If you build it (well), they will come."</p>
-
+          <p class="grey-text text-lighten-4">SimpleNotes is provided and developed by Infrastructure Services Development Knowledge Management Team. </p>
+          <blockquote class="white-text" style="border-left: 5px solid #ffcc80">
+            "Focus on the user and all else will follow" <br/>- Google
+          </blockquote> 
 
         </div>
         <div class="col l3 s12">
@@ -111,7 +114,9 @@
   <script type="text/javascript" src="js/directives/editableActionItem.js"></script>
   <script type="text/javascript" src="js/directives/participantInput.js"></script>
   <script type="text/javascript" src="js/directives/meetingAttendee.js"></script>
-
+  <script type="text/javascript" src="js/directives/meeting-index-nav.js"></script>
+  <script type="text/javascript" src="js/directives/modal-trigger.js"></script>
+  <script type="text/javascript" src="js/directives/dropdown-button.js"></script>
 
   </body>
 </html>

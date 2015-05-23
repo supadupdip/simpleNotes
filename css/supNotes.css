@@ -57,6 +57,10 @@ a.removeCard:hover, a.removeCard:active {
 	color: #b71c1c !important;
 }
 
+.dropdown-content.active{
+  z-index: 2000;
+}
+
 /*Sufix*/
   .input-field .sufix {
     position: absolute;

@@ -6,7 +6,7 @@
         <div class="col s12 m6 offset-m3">
           <div class="card">
             <div class="card-content">
-              <span class="card-title black-text">Uh Oh!</span>
+              <span class="card-title black-text">Uh Oh! Something went wrong!</span>
               <p>{{page.errorMessage}}</p>
             </div>
             <div class="card-action">
@@ -24,35 +24,43 @@
           <a href="#!" class="orange-text"><i class="mdi-action-view-module"> Grid View</i></a> |
           <a href="#!" class="orange-text"><i class="mdi-action-view-list"> List View</i></a>
         </div>-->
-        <nav class="blue-grey lighten-5 blue-grey-text text-lighten-3">
+    <div meeting-index-nav>
+        <ul id="sortDropdown" class="dropdown-content">
+          <li><a href="#!"><i class="fa fa-clock-o"></i></a></li>
+          <li class="divider"></li>
+          <li><a href="#!"><i class="fa fa-sort-alpha-asc"></i></a></li>
+          <li><a href="#!"><i class="fa fa-sort-alpha-desc"></i></a></li>
+        </ul>
+        <nav class="blue-grey lighten-5 blue-grey-text text-lighten-3" ng-hide="searchActive">
           <div class="nav-wrapper">
-            
             <ul class="left">
-              <li class="active"><a href="#" title="Recently Updated" class="mdi-device-access-time blue-grey-text text-light-3"></a></li>
-              <li><a href="#!" no-link class="blue-grey-text text-light-3"><i class="mdi-content-text-format"></i></a></li>
-               <li> 
-                <div class="switch">
-                  <label>
-                    Active
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                    Inactive
-                  </label>
-                </div>
-              </li>
+              <li><a class="dropdown-button blue-grey-text text-light-3"  href="#!" no-link dropdown-button data-activates="sortDropdown">Sort by<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
             </ul>
             <ul class="right">
               <li class="active"><a href="sass.html" class="blue-grey-text text-light-3"><i class="mdi-action-view-module"></i></a></li>
               <li><a href="components.html" class="blue-grey-text text-light-3"><i class="mdi-action-view-list"></i></a></li>
               <li>|</li>
-              <li><a href="#!" no-link class="blue-grey-text text-light-3"><i class="mdi-action-search"></i></a></li>
+              <li><a href="#!" no-link class="blue-grey-text text-light-3" ng-click="showSearch()"><i class="mdi-action-search"></i></a></li>
             </ul>
           </div>
         </nav>
-      </div>
+      <nav ng-show="searchActive" class="blue-grey lighten-3 white-text">
+        <div class="nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="meetingFilter" type="search" ng-model="page.searchText" required>
+              <label for="search"><i class="mdi-action-search"></i></label>
+              <i class="mdi-navigation-close" ng-click="Cancel()"></i>
+            </div>
+          </form>
+        </div>
+      </nav>      
+    </div>
+    
+    </div>
 
       <div class="row">
-        <div class="col s12 m4" ng-repeat="meeting in meetings">
+        <div class="col s12 m4" ng-repeat="meeting in meetings | filter: page.searchText">
 
                 <meeting-card></meeting-card>
         </div>
@@ -98,7 +106,7 @@
     </a>
     <ul>
       <li><a class="btn-floating yellow darken-1 tooltipped" hastooltip data-position="left" data-delay="25" data-tooltip="Share"><i class="large mdi-social-share"></i></a></li>
-      <li><a class="btn-floating green tooltipped modal-trigger" href="#newNote" id="newNote" no-link hastooltip data-position="left" data-delay="25" data-tooltip="New Note"><i class="large mdi-editor-mode-edit"></i></a></li>
+      <li><a class="btn-floating green tooltipped modal-trigger" href="#newNote" modal-trigger no-link hastooltip data-position="left" data-delay="25" data-tooltip="New Note"><i class="large mdi-editor-mode-edit"></i></a></li>
       <li><a class="btn-floating blue tooltipped" href="#/newMeeting" hastooltip data-position="left" data-delay="25" data-tooltip="New Meeting"><i class="large mdi-content-add"></i></a></li>
     </ul>
   </div>

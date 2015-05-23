@@ -6,6 +6,7 @@ angular.module('SimpleNotes')
 		$scope.page.loading = true;
 		$scope.page.updating = false;
 		$scope.page.error = false;
+		$scope.page.searchText = '';
 
 
 		var response = connectionFactory.getAllMeetings();
