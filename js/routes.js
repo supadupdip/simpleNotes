@@ -1,6 +1,11 @@
 angular.module('SimpleNotes')
 	.config(function($routeProvider){
-		$routeProvider.when('/meeting/:meetingID',{
+		$routeProvider
+		.when('/meeting/:meetingID',{
+			templateUrl: 'templates/pages/meeting-overview.html',
+			controller: 'MeetingOverviewController'
+		})
+		.when('/meeting/:meetingID/message/:messageID',{
 			templateUrl: 'templates/pages/meeting-overview.html',
 			controller: 'MeetingOverviewController'
 		})

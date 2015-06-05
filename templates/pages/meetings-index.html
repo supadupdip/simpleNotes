@@ -25,12 +25,7 @@
           <a href="#!" class="orange-text"><i class="mdi-action-view-list"> List View</i></a>
         </div>-->
     <div meeting-index-nav>
-        <ul id="sortDropdown" class="dropdown-content">
-          <li><a href="#!"><i class="fa fa-clock-o"></i></a></li>
-          <li class="divider"></li>
-          <li><a href="#!"><i class="fa fa-sort-alpha-asc"></i></a></li>
-          <li><a href="#!"><i class="fa fa-sort-alpha-desc"></i></a></li>
-        </ul>
+        <div meeting-card-sorts></div>
         <nav class="blue-grey lighten-5 blue-grey-text text-lighten-3" ng-hide="searchActive">
           <div class="nav-wrapper">
             <ul class="left">
@@ -54,13 +49,13 @@
             </div>
           </form>
         </div>
-      </nav>      
+      </nav>
     </div>
-    
+
     </div>
 
       <div class="row">
-        <div class="col s12 m4" ng-repeat="meeting in meetings | filter: page.searchText">
+        <div class="col s12 m4" ng-repeat="meeting in meetings | filter: page.searchText ">
 
                 <meeting-card></meeting-card>
         </div>

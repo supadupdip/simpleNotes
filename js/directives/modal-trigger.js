@@ -4,10 +4,7 @@ angular.module('SimpleNotes')
 			restrict: 'A',
 			link: function($scope, $element, $attrs){
 				$element.leanModal({
-					
-					
 				});
-				console.log($attrs);
 			}
 		}
 	});

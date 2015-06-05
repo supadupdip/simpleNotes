@@ -1,7 +1,7 @@
     <div class="row">
       <div class="col s12 m10 offset-m1">
         <div class="card-panel left-align {{meeting.cardColor}} {{meeting.cardIconColor}}">
-          <h3 class="header"><i class="{{meeting.cardIcon}}"></i>  {{meeting.Title}}<a hastooltip class="tooltipped right {{meeting.cardIconColor}}" ng-href="#/editMeeting/{{meeting.$id}}" data-position="bottom" data-tooltip="Edit Meeting Info"><i class="mdi-navigation-more-vert"></i></a></h3>
+          <h3 class="header" style="margin-top: 0px;"><i class="{{meeting.cardIcon}}"></i>  {{meeting.Title}}<a hastooltip class="tooltipped right {{meeting.cardIconColor}}" ng-href="#/editMeeting/{{meeting.$id}}" data-position="bottom" data-tooltip="Edit Meeting Info"><i class="mdi-navigation-more-vert"></i></a></h3>
           <p ng-show="meeting.recurring">Occurs every {{meeting.occursEvery}} <i class="mdi-device-access-time"></i> {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}<br/>
           <i class="mdi-maps-local-phone"></i> {{meeting.dialIn}}  |  <i class="mdi-notification-voice-chat"></i> {{meeting.dcsLink}}</p>
           <p ng-show="!meeting.recurring"> {{meeting.startDate | date:mm/dd/yyyy}} <i class="mdi-device-access-time"></i> {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}<br/>
@@ -12,7 +12,7 @@
 
     <div class="row">
       <div class="col s12 m10 offset-m1">
-        <div class="card-panel left-align">
+        <div class="left-align">
           <div class="row">
             <div class="col s12">
               <ul class="tabs" materialtabs>
@@ -22,48 +22,97 @@
               </ul>
             </div>
             <div id="notes" class="col s12">
-              
-                <div class="collection">
-                  <a href="#!" class="collection-item">4/8/2015</a>
-                  <a href="#!" class="collection-item active">April 8, 2015</a>
-                  <a href="#!" class="collection-item">8 April 2015</a>
-                  <a href="#!" class="collection-item">Alvin</a>
+              <div ng-hide="notes.length">
+                <div class="row">
+                  <div class="col s12 m12 center-align">
+                    <div class="card-panel blue-grey lighten-5">
+                      <h2 style="margin-top: 0px;"><i class="mdi-action-speaker-notes"></i></h2>
+                      <span> You'll see a summary of notes here once you've created some. Use the floating button on the bottom right to get started.
+                      </span>
+                    </div>
+                  </div>
                 </div>
-
-
-                <!-- Second Example -->
-                <ul class="collection">
-                  <li class="collection-item avatar">
-                    <i class="mdi-file-today circle grey lighten-2"></i>
-                    <span class="title"><a href="#!">4/8/2015</a></span>
-                    <p><a href="#!" favoritenote>Quick View <i class="mdi-action-search"></i></a></p>
-                    <a href="#!" class="secondary-content tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Edit Meeting"><i class="small mdi-action-grade"></i></a>
-                  </li>
-                  <li class="collection-item avatar">
-                    <i class="mdi-action-today circle grey darken-1"></i>
-                    <span class="title">April 8, 2015</span>
-                    <p>First Line <br>
-                       Second Line
-                    </p>
-                    <a href="#!" class="secondary-content tooltipped" hastooltip data-position="left" data-delay="50" data-tooltip="Edit Meeting"><i class="mdi-action-grade"></i></a>
-                  </li>
-                  <li class="collection-item avatar">
-                    <i class="mdi-av-play-arrow circle red"></i>
-                    <span class="title">8 April 2015</span>
-                    <p>First Line <br>
-                       Second Line
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
+              </div>
+               <ul class="collapsible popout" collapsible-initialize data-collapsible="accordion">
+                  <li ng-repeat="note in notes">
+                    <div class="collapsible-header">
+                      <i class="mdi-action-today darken-1"></i>{{note.meetingDate | date: MM/dd/yyyy}}
+                      <a ng-href="#/editNote/{{note.$id}}" class="right"><i class="mdi-navigation-arrow-forward"></i></a>
+                    </div>
+                    <div class="collapsible-body grey lighten-4" style="padding: 20px">
+                      <h5 class="orange-text">Note Details</h5>
+                      <div class="z-depth-2 white" ng-repeat="card in note.noteCards" style="padding: 10px; margin-bottom: 20px;">
+                      <h5>{{card.topicTitle}}</h5>
+                      <div>
+                        {{card.topicDetails}}
+                      </div>
+                      <hr />
+                      <div ng-repeat="actionItem in card.actionItems">
+                          <i ng-class="actionItem.complete ? 'mdi-toggle-check-box prefix green-text' : 'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>
+                          {{actionItem.details}}
+                      </div>
+                    </div>
+                  </div>
                   </li>
                 </ul>
+
             </div>
-            <div id="action" class="col s12">Test 2</div>
-            <div id="participants" class="col s12">Test 3</div>
+            <div id="action" class="col s12">
+              <div ng-hide="notes.length">
+                <div class="row">
+                  <div class="col s12 m12 center-align">
+                    <div class="card-panel blue-grey lighten-5">
+                      <h2 style="margin-top: 0px;"><i class="mdi-image-movie-creation"></i></h2>
+                      <span> You'll see a summary of pending action items here once you start creating notes. Use the floating button on the bottom right to get started.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Action Items Markup here -->
+
+
+            </div>
+            <div id="participants" class="col s12">
+              <div ng-hide="meeting.participants.length">
+                <div class="row">
+                  <div class="col s12 m12 center-align">
+                    <div class="card-panel blue-grey lighten-5">
+                      <h2 style="margin-top: 0px;"><i class="mdi-action-perm-contact-cal"></i></h2>
+                      <span> You'll see a list of participants here. These will help when you're adding attendees on your notes. Use the input below to start adding participants to this meeting.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="mdi-content-add prefix"></i>
+                <input id="icon_prefix" type="text" class="validate" participant-input="participant" ng-model="newParticipant">
+                <label for="icon_prefix">Add Participant</label>
+              </div>
+            </div>
+            <!-- Participants of this meeting -->
+            <div class="row">
+              <ul class="collection with-header">
+                <li class="collection-header"><h5><i class="mdi-action-perm-contact-cal"></i> Participants</h5></li>
+                <li class="collection-item" ng-hide="meeting.participants.length"><div>No Participants yet :(</div></li>
+                <li class="collection-item" ng-repeat="person in meeting.participants" meeting-attendee>
+                  <div>
+                    {{person.name}}
+                    <a no-link href="#!" class="removeAttendee secondary-content hide" ng-click="removeParticipant(person)">
+                    <i class="mdi-navigation-cancel grey-text"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+<pre>{{notes | json}}</pre>
 
  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red tooltipped" hastooltip data-position="left" data-delay="25" data-tooltip="Options">
@@ -74,5 +123,3 @@
       <li><a class="btn-floating green tooltipped" hastooltip data-position="left" data-delay="25" data-tooltip="New Note"><i class="large mdi-editor-mode-edit"></i></a></li>
     </ul>
   </div>
-
-  

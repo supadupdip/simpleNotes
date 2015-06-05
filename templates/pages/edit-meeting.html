@@ -39,9 +39,9 @@
                   <label style="padding-left: 15px;" for="startDate">Start Date</label>
                   <div class="input-field col s12">
 
-                    <!-- Changed this div from an input 
-                    <input datepicker datepicker-format="d mmmm, yyyy" id="startDate" type="date" class="datepicker" ng-model="meeting.startDate">-->
-                    <input id="startDate" jsondate type="date" name="startdate" ng-model="meeting.startDate" required>
+                    <!-- Changed this div from an input -->
+                    <input pick-a-date id="startDate" type="date" class="datepicker" ng-model="meeting.startDate">
+                    <!--<input id="startDate" jsondate type="date" name="startdate" ng-model="meeting.startDate" required>-->
                   </div>
                 </div>
                 <div class="row">
@@ -118,7 +118,7 @@
                     <label class="active" for="dcoDcs">DCO/DCS Link</label>
                   </div>
                 </div>
-                <div class="row">                
+                <div class="row">
                   <h5 class="header left orange-text">Customize Appearance</h5>
                 </div>
                 <card-selects></card-selects>
@@ -189,7 +189,7 @@
           </div>
           <div clas="col-2">
             <pre id="myJSON">{{meeting | json}}
-            </pre> 
+            </pre>
           </div>
       </div>
 </div>
@@ -214,5 +214,3 @@
       <a href="#!" no-link class="modal-action modal-close btn btn-flat waves-effect waves-grey">Close</a>
     </div>
   </div>
-
-  

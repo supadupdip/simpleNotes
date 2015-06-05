@@ -14,17 +14,17 @@ angular.module('SimpleNotes')
 			response.success = false;
 		     response.$loaded().then(function() {
 		        console.log("loaded record:", response);
-		        response.success = true;		        
+		        response.success = true;
 		        $scope.page.loading = false;
 		        if(response.Title){
-					$scope.meeting = response;
+							$scope.meeting = response;
 		        }
 		        else{
 		        	//the item was not found
 		        	$scope.page.error = true;
 		        	$scope.page.errorMessage = "The item you're looking for doesn't seem to exist";
 		        }
-		        
+
 
 
 		     }).catch(function(error){
@@ -45,13 +45,17 @@ angular.module('SimpleNotes')
 		$scope.Update = function(meeting){
 			$scope.page.updating = true;
 			//var response = connectionFactory.updateMeeting(meetingID);
+			var currentDate = new Date();
+			var jsonDate = currentDate.toJSON();
+			$scope.meeting.lastActivity = jsonDate;
 
-			      meeting.$save().then(function() {
-					Materialize.toast('Meeting Updated', 4000);
-					//window.location = "/meeting/"+meetingID;
-			      }).catch(function(error) {
-			        alert('Error!');
-			      });
+      meeting.$save().then(function() {
+			//Materialize.toast('Meeting Updated', 4000);
+			window.location = "#/meeting/"+meetingID+"/message/updated";
+			$scope.page.updating = false;
+      }).catch(function(error) {
+        alert('Error!');
+      });
 		};
 		$scope.Delete = function(meeting){
 			//Prompt for confirmation

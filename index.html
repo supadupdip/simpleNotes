@@ -16,7 +16,7 @@
       <div class="nav-wrapper">
           <a id="logo-container" href="#" class="brand-logo left-align hide-on-small-only">Simple Notes <i class="mdi-action-speaker-notes right"></i></a>
           <a id="logo-container" href="#" class="brand-logo center-align hide-on-med-and-up"><i class="mdi-action-speaker-notes right"></i></a>
-      <a href="#" top-nav no-link data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu" ></i></a>        
+      <a href="#" top-nav no-link data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu" ></i></a>
         <ul id="top-nav" class="right hide-on-med-and-down">
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
@@ -49,7 +49,7 @@
           <p class="grey-text text-lighten-4">SimpleNotes is provided and developed by Infrastructure Services Development Knowledge Management Team. </p>
           <blockquote class="white-text" style="border-left: 5px solid #ffcc80">
             "Focus on the user and all else will follow" <br/>- Google
-          </blockquote> 
+          </blockquote>
 
         </div>
         <div class="col l3 s12">
@@ -82,9 +82,9 @@
   <script type="text/javascript" src="js/angular.min.js"></script>
   <script type="text/javascript" src="js/angular-route.min.js"></script>
   <script type="text/javascript" src="js/angular-animate.min.js"></script>-->
-      <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+  <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
@@ -92,6 +92,9 @@
 
   <!--Factories-->
   <script src="js/services/meeting-notes-factory.js" type="text/javascript"></script>
+
+  <!--Filters-->
+  <script src="js/filters/meeting-overview.js" type="text/javascript"></script>
 
   <!-- Controllers -->
   <script type="text/javascript" src="js/controllers/meetings-index.js"></script>
@@ -101,13 +104,14 @@
   <script type="text/javascript" src="js/controllers/edit-meeting-notes.js"></script>
 
   <!-- Directives -->
+  <script type="text/javascript" src="js/directives/common-directives.js"></script>
   <script type="text/javascript" src="js/directives/navbar.js"></script>
   <script type="text/javascript" src="js/directives/meeting-card.js"></script>
   <script type="text/javascript" src="js/directives/note-card.js"></script>
   <script type="text/javascript" src="js/directives/card-selects.js"></script>
   <script type="text/javascript" src="js/directives/jsondate.js"></script>
   <script type="text/javascript" src="js/directives/preloader.js"></script>
-  <script type="text/javascript" src="js/directives/tooltip.js"></script>  
+  <script type="text/javascript" src="js/directives/tooltip.js"></script>
   <script type="text/javascript" src="js/directives/new-note-modal.js"></script>
   <script type="text/javascript" src="js/directives/actioniteminput.js"></script>
   <script type="text/javascript" src="js/directives/noLink.js"></script>
@@ -117,6 +121,10 @@
   <script type="text/javascript" src="js/directives/meeting-index-nav.js"></script>
   <script type="text/javascript" src="js/directives/modal-trigger.js"></script>
   <script type="text/javascript" src="js/directives/dropdown-button.js"></script>
+  <script type="text/javascript" src="js/directives/collapsible.js"></script>
+  <script type="text/javascript" src="js/directives/materialize-init.js"></script>
+  <script type="text/javascript" src="js/directives/pick-a-date.js"></script>
+
 
   </body>
 </html>

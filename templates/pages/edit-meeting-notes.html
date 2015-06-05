@@ -1,6 +1,6 @@
       <div class="row">
-        <div class="col s12 m9">
-          <h3 class="header left orange-text">{{note.meeting}}</h3>
+        <div class="col s12 m9 l12">
+          <h3 class="header left orange-text"><a ng-href="#/meeting/{{note.meetingID}}" style="margin-left: -50px;"><i class="mdi-navigation-arrow-back orange circle white-text waves-effect waves-gray"></i></a> {{note.meeting}}</h3>
         </div>
         <div class="col s12 m3" style="margin-top: 10px;">
                   <div class="input-field col s12">
@@ -57,7 +57,7 @@
                           </div>
                         </li>
                       </ul>
-                
+
               </div>
               <div id="test3" class="col s12">Test 3
               <!-- Here is the action Item view -->
@@ -66,12 +66,12 @@
                   <div class="row">
                     <div class="col s12 m12 center-align">
                       <div class="card-panel blue-grey lighten-5">
-                        <span> Yay! Use the Add topic button below to get started :)
+                        <span> You'll see a summary of action items here once you've created some on the Notes tab. Go to the Notes tab to get started :)
                         </span>
                       </div>
                     </div>
                   </div>
-                </div>  
+                </div>
               <!-- Mark up that will show when there are notes -->
                 <ul class="collection">
                   <li class="collection-item avatar" ng-repeat="anote in note.noteCards">
@@ -79,7 +79,9 @@
                     <span class="title">{{anote.topicTitle}}</span>
                     <ul ng-show="anote.actionItems.length">
                       <li ng-repeat="item in anote.actionItems">
-                                <i ng-class="item.complete ? 'mdi-toggle-check-box prefix green-text' : 'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>
+                        <i ng-class="item.complete ?
+                        'mdi-toggle-check-box prefix green-text' :
+                        'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>
                         {{item.details}}</li>
                     </ul>
                     <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
@@ -87,12 +89,12 @@
                 </ul>
               </div>
 
-              
-              
-              
+
+
+
             </div>
             <pre>{{note | json}}
-            </pre> 
+            </pre>
           </div>
 
 
@@ -102,34 +104,42 @@
                   <div class="row">
                     <ul class="collection with-header">
                       <li class="collection-header"><h5><i class="mdi-action-perm-contact-cal"></i> Attendees</h5></li>
-                      <li class="collection-item" ng-hide="note.attendees.length"><div>No attendees yet :(</div></li> 
-                      <li class="collection-item" ng-repeat="person in note.attendees" meeting-attendee><div>{{person.name}}<a no-link href="#!" class="removeAttendee secondary-content hide" ng-click="removeAttendee(person)"><i class="mdi-navigation-cancel grey-text"></i></a></div></li>     
-   
+                      <li class="collection-item" ng-hide="note.attendees.length"><div>No attendees yet :(</div></li>
+                      <li class="collection-item" ng-repeat="person in note.attendees" meeting-attendee><div>{{person.name}}<a no-link href="#!" class="removeAttendee secondary-content hide" ng-click="removeAttendee(person)"><i class="mdi-navigation-cancel grey-text"></i></a></div></li>
+
 
                     </ul>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
                       <i class="mdi-content-add prefix"></i>
-                      <input id="icon_prefix" type="text" class="validate" participant-input ng-model="newParticipant">
+                      <input id="icon_prefix" type="text" class="validate" participant-input="attendees" ng-model="newParticipant">
                       <label for="icon_prefix">Add Attendee</label>
-                      
+
                     </div>
+                  </div>
+                  <div class="row">
+                    <ul class="collection with-header" ng-show="newParticipant.length > 2">
+                    <li class="collection-header"><h5>Past Participants</h5></li>
+                    <li class="collection-item" ng-repeat="participant in meeting.participants | filter: newParticipant">
+                      <div>{{participant.name}}
+                        <a href="#!" no-link participant-input ng-click="addPastParticipant(participant)" class="secondary-content"><i class="mdi-content-add-circle-outline"></i></a>
+                      </div>
+                    </li>
+                    </ul>
                   </div>
 
           </div>
 
       </div>
- <div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-hide="page.updating">
-    <a class="btn-floating btn-large red tooltipped" ng-click="Update(note)" hastooltip data-position="left" data-delay="25" data-tooltip="Update">
-      <i class="large mdi-content-save"></i>
-    </a>
-    <ul>
-      <li><a class="btn-floating yellow darken-1 tooltipped" ng-click="ShareNote(note)"hastooltip data-position="left" data-delay="25" data-tooltip="Share Note"><i class="large mdi-social-share"></i></a></li>
-    </ul>
-  </div>
-   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-show="page.updating">
-    <div preloader></div>  
-  </div>
-
-
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-hide="page.updating">
+  <a class="btn-floating btn-large red tooltipped" ng-click="Update(note)" hastooltip data-position="left" data-delay="25" data-tooltip="Update">
+    <i class="large mdi-content-save"></i>
+  </a>
+  <ul>
+    <li><a class="btn-floating yellow darken-1 tooltipped" ng-click="ShareNote(note)"hastooltip data-position="left" data-delay="25" data-tooltip="Share Note"><i class="large mdi-social-share"></i></a></li>
+  </ul>
+</div>
+ <div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-show="page.updating">
+  <div preloader></div>
+</div>

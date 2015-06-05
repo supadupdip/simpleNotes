@@ -1,7 +1,7 @@
 
 angular.module('SimpleNotes')
 	.controller('MeetingsIndexController',['$http', '$scope', 'meetingFactory', 'connectionFactory', function($http, $scope, meetingFactory, connectionFactory){
-		
+
 		$scope.page = {};
 		$scope.page.loading = true;
 		$scope.page.updating = false;
@@ -14,7 +14,7 @@ angular.module('SimpleNotes')
 			response.success = false;
 		     response.$loaded().then(function() {
 		        console.log("loaded record:", response);
-		        response.success = true;		        
+		        response.success = true;
 		        $scope.page.loading = false;
 		        if(response.length){
 					$scope.meetings = response;
@@ -24,7 +24,7 @@ angular.module('SimpleNotes')
 		        	$scope.page.error = true;
 		        	$scope.page.errorMessage = "The item you're looking for doesn't seem to exist";
 		        }
-		        
+
 
 
 		     }).catch(function(error){
@@ -32,6 +32,13 @@ angular.module('SimpleNotes')
 		     	$scope.page.errorMessage = error;
 		     	alert('There was an error fetching data');
 		     });
+
+		$scope.getActiveSortv= function(){
+			return $scope.activeSort;
+		};
+		$scope.setActiveSort = function(selectedSort){
+			$scope.activeSort = selectedSort;
+		}	;
 		/*
 		$http({method: 'GET', url:'/json/meetings.js'})
 			.success(function(data){

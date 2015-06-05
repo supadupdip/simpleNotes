@@ -6,79 +6,17 @@ angular.module('SimpleNotes')
 		$scope.page.loading = true;
 		$scope.page.updating = false;
 		$scope.page.error = false;
-		/*
-		$scope.meeting ={
-			Title: 'Box IA Sync',
-			participants: 	[
-								{
-									name: "Carlos Gonzalez",
-									email: "",
-									account: ""
-								},
-								{
-									name: "Slutty Sussie",
-									email: "",
-									account: ""
-								}
-							]
-		}
-		$scope.note = {
-							ID: "1",
-							meetingID: "1",
-							meetingDate: "",
-							attendees: [],
-							noteCards: [
-								{
-									topicTitle: "First topic",
-									topicDetails: "Some details",
-									actionItems: [
-										{
-											complete: true,
-											details: "Email someone",
-											mentions: ""
-										},
-										{
-											complete: false,
-											details: "Email someonelse",
-											mentions: ""
-										}
-									]
-								},
-								{
-									topicTitle: "Second Topic",
-									topicDetails: "Some other details",
-									actionItems: [
-										{
-											complete: false,
-											details: "Send an email",
-											mentions: ""
-										},
-										{
-											complete: false,
-											details: "Send the second email",
-											mentions: ""
-										}
-									]
-								},
-								{
-									topicTitle: "Third Topic",
-									topicDetails: "Some other details",
-									actionItems: [
-									]
-								}
-							]
-						};
-		//$scope.meeting = meetingFactory.getMeeting();
-		*/
+		var meetingResponse = null;
 		var response = connectionFactory.getNote(noteID);
 
 			response.success = false;
 		     response.$loaded().then(function() {
-		        console.log("loaded note record:", response);
-		        response.success = true;		        
+		        //console.log("loaded note record:", response);
+		        response.success = true;
 		        $scope.page.loading = false;
 		        if(response.meeting){
-					$scope.note = response;
+							$scope.note = response;
+							$scope.loadMeetingInfo($scope.note.meetingID);
 		        }
 		        else{
 		        	//the item was not found
@@ -90,7 +28,8 @@ angular.module('SimpleNotes')
 		     	$scope.page.errorMessage = error;
 		     	alert('There was an error fetching data');
 		     });
-		
+		//console.log($scope.note);
+		//$scope.loadMeetingInfo($scope.note.meetingID);
 		$scope.addNoteCard = function(){
 			var blankCard = new meetingFactory.getNoteCard();
 			//Check that the noteCards property exsits
@@ -103,7 +42,7 @@ angular.module('SimpleNotes')
 
 		$scope.removeNoteCard = function(thisNoteCard){
 			var index = $scope.note.noteCards.indexOf(thisNoteCard);
-			$scope.note.noteCards.splice(index, 1); 
+			$scope.note.noteCards.splice(index, 1);
 		};
 
 		$scope.Cancel = function(){
@@ -122,7 +61,9 @@ angular.module('SimpleNotes')
 			        $scope.page.updating = false;
 			        //pop up a message that it saved succesfully!
 			        Materialize.toast('Note updated!', 4000) // 4000 is the duration of the toast
-			        //Also update the latest activity for this meeting
+			        //$scope.addNewParticipantsToMeeting($scope.meeting.participants, note.attendees);
+							//Also update the latest activity for this meeting
+							$scope.UpdateMeeting($scope.meeting);
 
 			      }).catch(function(error) {
 			        alert('Error!');
@@ -139,7 +80,7 @@ angular.module('SimpleNotes')
 			  $('#itemDeleted').openModal();
 			  //window.location = "/";
 			}, function(error) {
-			  console.log("Error:", error);
+			  //console.log("Error:", error);
 			});
 			//We also delete any meeting notes associated with this meeting
 		};
@@ -148,9 +89,51 @@ angular.module('SimpleNotes')
 			console.log('attempting undo');
 		};
 
+		$scope.loadMeetingInfo = function(meetingID){
+			meetingResponse = connectionFactory.getMeeting(meetingID);
+
+				meetingResponse.success = false;
+			     meetingResponse.$loaded().then(function() {
+			        console.log("loaded record:", meetingResponse);
+			        meetingResponse.success = true;
+			        $scope.page.loading = false;
+			        if(meetingResponse.Title){
+								$scope.meeting = meetingResponse;
+			        }
+			        else{
+			        	//the item was not found
+			        	$scope.page.error = true;
+			        	$scope.page.errorMessage = "The item you're looking for doesn't seem to exist";
+			        }
+
+
+
+			     }).catch(function(error){
+			     	$scope.page.error = true;
+			     	$scope.page.errorMessage = error;
+			     	alert('There was an error fetching the meeting data');
+			     });
+		};
+		$scope.addNewParticipantsToMeeting = function(participants, meetingAttendees){
+			console.log('Logging the attendees for the meeting', meetingAttendees);
+			var newParticipants = [];
+			for(var i = 0; i< meetingAttendees.length; i++){
+				//Let's check if this attendee already exists in the meeting participants list
+				if(participants.indexOf(meetingAttendees[i]) == -1) {
+				   newParticipants.push(meetingAttendees[i]);
+				}
+			}
+			console.log('these are the attendees we are going to add', newParticipants);
+		};
+		$scope.UpdateMeeting = function(meeting){
+			var currentDate = new Date();
+			var jsonDate = currentDate.toJSON();
+			$scope.meeting.lastActivity = jsonDate;
+			meeting.$save().then(function() {
+				//pop up a message that it saved succesfully!
+				Materialize.toast('Meeting updated!', 4000) // 4000 is the duration of the toast
+			}).catch(function(error) {
+				alert('Error Updating Meeting!');
+			});
+		};
 	}]);
-
-
-
-
-
