@@ -5,7 +5,8 @@
   <div class="card-content">
     <span style="max-width: 220px;"><h3 class="card-title activator grey-text text-darken-4 truncate">{{meeting.Title}}</h3></span>
     <i class="mdi-navigation-more-vert activator right"></i>
-    <p>{{meeting.occursEvery}} @ {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}</p>
+    <p ng-show="meeting.recurring">Every {{meeting.occursEvery}} @ {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}</p>
+    <p ng-hide="meeting.recurring">{{meeting.startDate}} @ {{meeting.hour}}:{{meeting.minute}} {{meeting.meridian}}</p>
     <p><a ng-href="#/meeting/{{meeting.$id}}">Open Notes <i class="mdi-navigation-arrow-forward"></i></a></p>
   </div>
   <div class="card-reveal">

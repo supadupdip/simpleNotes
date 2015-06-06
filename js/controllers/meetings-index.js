@@ -7,6 +7,7 @@ angular.module('SimpleNotes')
 		$scope.page.updating = false;
 		$scope.page.error = false;
 		$scope.page.searchText = '';
+		$scope.page.activeView = 'thumbnails';
 
 
 		var response = connectionFactory.getAllMeetings();
@@ -33,12 +34,16 @@ angular.module('SimpleNotes')
 		     	alert('There was an error fetching data');
 		     });
 
-		$scope.getActiveSortv= function(){
-			return $scope.activeSort;
+		$scope.getActiveSort= function(){
+			return $scope.activeSort.title;
 		};
 		$scope.setActiveSort = function(selectedSort){
 			$scope.activeSort = selectedSort;
 		}	;
+		$scope.setActiveView = function(viewName){
+			$scope.page.activeView = viewName;
+		};
+
 		/*
 		$http({method: 'GET', url:'/json/meetings.js'})
 			.success(function(data){

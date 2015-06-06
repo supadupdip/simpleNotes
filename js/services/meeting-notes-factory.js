@@ -63,9 +63,9 @@ angular.module('SimpleNotes')
 		}
 		myFactory.indexSortCategories = function(){
 			var sortCategories = [
-				{title: "activity", tooltip: "by Latest Activity", icon: "fa fa-clock-o"},
-				{title: "alphaAsc", tooltip: "Alphabetically in ascending order", icon: "fa fa-sort-alpha-asc"},
-				{title: "alphaDesc", tooltip: "Alphabetically in descending order", icon: "fa fa-sort-alpha-desc"}
+				{title: "activity", tooltip: "by Latest Activity", icon: "fa fa-clock-o", sortExp: "lastActivity"},
+				{title: "alphaAsc", tooltip: "Alphabetically in ascending order", icon: "fa fa-sort-alpha-asc", sortExp: "Title"},
+				{title: "alphaDesc", tooltip: "Alphabetically in descending order", icon: "fa fa-sort-alpha-desc", sortExp: "-Title"}
 			]
 			return sortCategories
 		}

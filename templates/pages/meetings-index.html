@@ -17,23 +17,23 @@
       </div>
 </div>
 <div ng-hide="page.error && page.loading">
-      <h1 class="header center orange-text">Existing Meetings</h1>
-       <div class="divider"></div>
-      <div class="row">
-        <!--<div class="right">
-          <a href="#!" class="orange-text"><i class="mdi-action-view-module"> Grid View</i></a> |
-          <a href="#!" class="orange-text"><i class="mdi-action-view-list"> List View</i></a>
-        </div>-->
+    <h1 class="header center orange-text">Existing Meetings</h1>
     <div meeting-index-nav>
-        <div meeting-card-sorts></div>
+      <ul meeting-card-sorts id="sortDropdown" class="dropdown-content">
+          <li data-sort-type="{{sortOption.title}}" ng-repeat="sortOption in sortTypes" ng-class="{'active': sortOption == activeSort}" ng-click="makeActive(sortOption)">
+            <a href="#!" no-link title="{{sortOption.tooltip}}">
+              <i class="{{sortOption.icon}}"></i>
+            </a>
+          </li>
+      </ul>
         <nav class="blue-grey lighten-5 blue-grey-text text-lighten-3" ng-hide="searchActive">
           <div class="nav-wrapper">
             <ul class="left">
               <li><a class="dropdown-button blue-grey-text text-light-3"  href="#!" no-link dropdown-button data-activates="sortDropdown">Sort by<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
             </ul>
             <ul class="right">
-              <li class="active"><a href="sass.html" class="blue-grey-text text-light-3"><i class="mdi-action-view-module"></i></a></li>
-              <li><a href="components.html" class="blue-grey-text text-light-3"><i class="mdi-action-view-list"></i></a></li>
+              <li ng-class="{'active': page.activeView == 'thumbnails'}" ng-click="setActiveView('thumbnails')"><a href="#!" no-link class="blue-grey-text text-light-3"><i class="mdi-action-view-module"></i></a></li>
+              <li ng-class="{'active': page.activeView == 'list'}" ng-click="setActiveView('list')"><a href="#!" no-link class="blue-grey-text text-light-3"><i class="mdi-action-view-list"></i></a></li>
               <li>|</li>
               <li><a href="#!" no-link class="blue-grey-text text-light-3" ng-click="showSearch()"><i class="mdi-action-search"></i></a></li>
             </ul>
@@ -53,14 +53,17 @@
     </div>
 
     </div>
-
-      <div class="row">
-        <div class="col s12 m4" ng-repeat="meeting in meetings | filter: page.searchText ">
+      <!-- Thumbnail View -->
+      <div class="row" ng-show="page.activeView == 'thumbnails'">
+        <div class="col s12 m4" ng-repeat="meeting in meetings | filter: page.searchText | orderBy : activeSort.sortExp">
 
                 <meeting-card></meeting-card>
         </div>
       </div>
-      <br><br>
+      <!-- List Collection View -->
+      <div class="row" ng-show="page.activeView == 'list'">
+                <meeting-list-collection></meeting-list-collection>
+      </div>
     <div class="section">
 
       <!--   Icon Section   -->
