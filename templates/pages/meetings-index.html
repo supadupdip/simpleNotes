@@ -99,13 +99,40 @@
     </div>
 
  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large red tooltipped" hastooltip data-position="left" data-delay="25" data-tooltip="Options">
+    <a class="btn-floating btn-large red tooltipped" fab-tooltips hastooltip data-position="left" data-delay="25" data-tooltip="Options">
       <i class="large mdi-navigation-more-vert"></i>
     </a>
     <ul>
-      <li><a class="btn-floating yellow darken-1 tooltipped" hastooltip data-position="left" data-delay="25" data-tooltip="Share"><i class="large mdi-social-share"></i></a></li>
-      <li><a class="btn-floating green tooltipped modal-trigger" href="#newNote" modal-trigger no-link hastooltip data-position="left" data-delay="25" data-tooltip="New Note"><i class="large mdi-editor-mode-edit"></i></a></li>
-      <li><a class="btn-floating blue tooltipped" href="#/newMeeting" hastooltip data-position="left" data-delay="25" data-tooltip="New Meeting"><i class="large mdi-content-add"></i></a></li>
+      <li data-trigger="hover click manual" data-container="body" data-placement="left" title="Share" class="tooltipped"><a class="btn-floating yellow darken-1 tooltipped" ><i class="large mdi-social-share"></i></a></li>
+      <li data-trigger="hover click manual" data-container="body" data-placement="left" title="New Note" class="tooltipped"><a class="btn-floating green tooltipped modal-trigger" href="#newNote" modal-trigger no-link><i class="large mdi-editor-mode-edit"></i></a></li>
+      <li data-trigger="hover click manual" data-container="body" data-placement="left" title="New Meeting" class="tooltipped"><a class="btn-floating blue tooltipped" href="#/newMeeting" ><i class="large mdi-content-add"></i></a></li>
     </ul>
   </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="meetingIndexActions" class="modal bottom-sheet">
+  <div class="modal-content">
+    <div class="row">
+    <div class="col s4 m4">
+      <a href="#!" class="btn btn-flat grey lighten-4" style="height: auto; padding-top: 20px;">
+          <i class="mdi-content-add white-text circle blue large" style="font-size: 58px"></i>
+        <p style="margin-top: 0px; margin-botton: 0px; line-height: 20px;">New Meeting</p>
+      </a>
+    </div>
+    <div class="col s4 m4">
+      <a href="#!" class="btn btn-flat grey lighten-4" style="height: auto; padding-top: 20px;">
+          <i class="mdi-editor-mode-edit white-text circle green large" style="font-size: 58px"></i>
+        <p style="margin-top: 0px; margin-botton: 0px; line-height: 20px;">New Note</p>
+      </a>
+    </div>
+    <div class="col s4 m4">
+      <a href="#!" class="btn btn-flat grey lighten-4" style="height: auto; padding-top: 20px;">
+          <i class="mdi-social-share white-text circle yellow large" style="font-size: 58px"></i>
+        <p style="margin-top: 0px; margin-botton: 0px; line-height: 20px;">Share</p>
+      </a>
+    </div>
+  </div>
+  </div>
+
 </div>
