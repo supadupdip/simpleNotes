@@ -18,6 +18,14 @@ angular.module('SimpleNotes')
 						$(this).tooltip('hide');
 					});
 				});
+				/* Waiting for FAB actions to be added to 
+				$($element).on('click', function(){
+					($($element).hasClass('menu-open')) ? console.log('this button does have an active class'): console.log('this button does not have an active class');
+				});
+
+				$($element).on('click', function(){
+					this.closeFAB();
+				});*/
 
 				/*
 				var pos = $attrs.position;

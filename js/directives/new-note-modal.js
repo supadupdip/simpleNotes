@@ -2,22 +2,22 @@ angular.module('SimpleNotes')
 	.directive('newNote', function(){
 		return{
 			restrict: 'A',
-			replace: true,
+			replace: false,
 			priority: 1,
 			templateUrl: 'templates/directives/new-note-modal.html',
 			link: function($scope, $element, $attrs){
-				$('#newNote').on('click', function(){
-					$scope.newNote = {};
-					$scope.newNote.meetingDate = new Date();
-					$element.openModal({
+				console.log($element);
+				$($element).find('div.modal').leanModal({
+						dismissible: false,
 						ready: function(){
+							console.log('Im being called on modal ready!');
 							$scope.getstarted();
-						}
-					});
+						},
+						complete: function() { alert('Closed'); }
 				});
 			},
 			controller: function($scope, connectionFactory){
-				$scope.getstarted = function(){					
+				$scope.getstarted = function(){
 					$scope.page = {};
 					$scope.page.loading = true;
 					$scope.page.updating = false;
@@ -30,7 +30,7 @@ angular.module('SimpleNotes')
 					response.success = false;
 				     response.$loaded().then(function() {
 				        console.log("loaded record:", response);
-				        response.success = true;		        
+				        response.success = true;
 				        $scope.page.loading = false;
 				        if(response.length){
 							$scope.meetings = response;
@@ -57,7 +57,7 @@ angular.module('SimpleNotes')
 					else{
 						alert('There was an error creating the meeting')
 					}
-								
+
 					/*
 					$http({method: 'POST', url:'/json'})
 						.catch(function(meeting){

@@ -1,10 +1,5 @@
 angular.module('SimpleNotes')
 	.factory('meetingFactory', function(){
-
-		var participant = {
-
-		}
-
 		var myFactory = {};
 		myFactory.getMessages = function(){
 			var messages = {
@@ -37,13 +32,21 @@ angular.module('SimpleNotes')
 		};
 
 		myFactory.getNote = function(){
-			var note={
+			var today = new Date();
+			var day = today.getDate();
+			var month = today.getMonth();
+			month += 1;
+			var year = today.getFullYear();
+			var fullDate = month+"/"+day+"/"+year;
+
+			var note = {
 				meetingID: null,
-				meetingDate: new Date(),
+				meetingTitle: null,
+				meetingDate: fullDate
 				//noteCards: [],	//Need to comment this out for FireBase
-			}
-			return meetingNote;
-		}
+			};
+			return note;
+		};
 
 		myFactory.getNoteCard = function(){
 			var noteCard= {
@@ -52,7 +55,7 @@ angular.module('SimpleNotes')
 				actionItems : []
 			}
 			return noteCard;
-		}
+		};
 		myFactory.getActionItem = function(){
 			var actionItem={
 				complete: false,
@@ -60,7 +63,7 @@ angular.module('SimpleNotes')
 				mentions: []
 			}
 			return  actionItem;
-		}
+		};
 		myFactory.indexSortCategories = function(){
 			var sortCategories = [
 				{title: "activity", tooltip: "by Latest Activity", icon: "fa fa-clock-o", sortExp: "lastActivity"},
@@ -68,7 +71,7 @@ angular.module('SimpleNotes')
 				{title: "alphaDesc", tooltip: "Alphabetically in descending order", icon: "fa fa-sort-alpha-desc", sortExp: "-Title"}
 			]
 			return sortCategories
-		}
+		};
 		return myFactory;
 
 	})

@@ -6,7 +6,7 @@
   <title>SimpleNotes</title>
 
   <!-- CSS  -->
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="node_modules/materialize-css/bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/supNotes.css" type="text/css" rel="stylesheet"/>
   <link href="css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
   <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
@@ -22,13 +22,13 @@
         <ul id="top-nav" class="right hide-on-med-and-down">
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
-          <li><a class="modal-trigger" href="#newNote" modal-trigger no-link><i class="mdi-content-add left"></i>New Note</a></li>
+          <li><a href="#/newNote"><i class="mdi-content-add left"></i>New Note</a></li>
         </ul>
         <ul id="nav-mobile" class="side-nav">
           <li><a href="#" class="orange-text">Simple Notes <i class="mdi-action-speaker-notes right"></i></a></li>
           <li><a href="#">Meetings</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
-          <li><a class="modal-trigger" href="#newNote" modal-trigger no-link><i class="mdi-content-add left"></i>New Note</a></li>
+          <li><a href="#/newNote"><i class="mdi-content-add left"></i>New Note</a></li>
         </ul>
       </div>
     </div>
@@ -78,7 +78,7 @@
 
   <!--  Scripts-->
   <script src="js/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
+  <script src="node_modules/materialize-css/bin/materialize.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
   </script>
@@ -105,6 +105,7 @@
   <script type="text/javascript" src="js/controllers/meetings-index.js"></script>
   <script type="text/javascript" src="js/controllers/meeting-overview.js"></script>
   <script type="text/javascript" src="js/controllers/new-meeting.js"></script>
+  <script type="text/javascript" src="js/controllers/new-note.js"></script>
   <script type="text/javascript" src="js/controllers/edit-meeting.js"></script>
   <script type="text/javascript" src="js/controllers/edit-meeting-notes.js"></script>
 

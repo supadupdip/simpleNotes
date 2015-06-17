@@ -21,6 +21,10 @@ angular.module('SimpleNotes')
 			templateUrl: 'templates/pages/new-meeting.html',
 			controller: 'NewMeetingController'
 		})
+		.when('/newNote',{
+			templateUrl: 'templates/pages/new-note.html',
+			controller: 'NewNoteController'
+		})
 		.when('/',{
 			templateUrl: 'templates/pages/meetings-index.html',
 			controller: 'MeetingsIndexController'

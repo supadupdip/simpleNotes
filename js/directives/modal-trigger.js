@@ -3,7 +3,10 @@ angular.module('SimpleNotes')
 		return{
 			restrict: 'A',
 			link: function($scope, $element, $attrs){
-				$element.leanModal({
+				$($element).on('click', function(){
+					var modalName = $attrs.modalTrigger;
+					modalName = '#'+modalName;
+					$(modalName).openModal();
 				});
 			}
 		}

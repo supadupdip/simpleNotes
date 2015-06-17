@@ -1,0 +1,36 @@
+
+      <h1 class="header center orange-text">New Note</h1>
+
+      <div class="row">
+        <div class="col offset-m2 s12 m8">
+            <form name="newNoteForm" class="col s12">
+              <div class="row">
+                <label>Select a Meeting</label>
+                <select class="browser-default" ng-model="newNote.meetingID" ng-options="meeting.$id as meeting.Title for meeting in meetings" required>
+                  <!--<option ng-repeat="meeting in meetings">{{note.meeting}}</option>-->
+                </select>
+              </div>
+              <div class="row">
+                <label style="padding-left: 15px;" for="startDate">Meeting Date</label>
+                <div class="input-field col s12">
+
+                  <!-- Changed this div from an input -->
+                  <input pick-a-date id="meetingDate" type="text" data-value="{{newNote.meetingDate | date: mm/dd/yyyy}}"class="datepicker" ng-model="newNote.meetingDate" required>
+                  <!--<input jsondate id="startDate" type="date" name="startdate" ng-model="meeting.startDate" required>-->
+                </div>
+              </div>
+
+                <div class="row right-align">
+                      <button class="waves-effect waves-orange btn-flat" ng-click="back()">Cancel</button>
+                      <button class="btn waves-effect waves-light orange darken-4" ng-disabled="newNoteForm.$invalid" ng-click="createNote(newNote)" name="Create Note">Create
+                        <i class="mdi-content-add right"></i>
+                      </button>
+                </div>
+            </form>
+          </div>
+          <div clas="col-2">
+            <pre>{{newNote | json}}
+            </pre>
+          </div>
+      </div>
+      <br><br>
