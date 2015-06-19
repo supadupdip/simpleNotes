@@ -6,6 +6,7 @@ angular.module('SimpleNotes')
 			//console.log('We detected a message ID');
 			messageID = $routeParams.messageID;
 			if(messageID == "created"){
+				//console.log('message should be we created the meeting');
 				Materialize.toast('Meeting Created!', 5000);
 			}
 			if(messageID == "updated"){

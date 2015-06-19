@@ -1,17 +1,17 @@
 
-.ng-enter { 
+.ng-enter {
   -webkit-animation:slideInRight 0.4s both ease-in;
   -moz-animation:slideInRight 0.4s both ease-in;
-  animation: slideInRight 0.4s both ease-in; z-index: 8888; 
+  animation: slideInRight 0.4s both ease-in; z-index: 8888;
 }
-.ng-leave { 
+.ng-leave {
   -webkit-animation:slideOutLeft 0.4s both ease-in;
   -moz-animation:slideOutLeft 0.4s both ease-in;
-  animation: slideOutLeft 0.4s both ease-in; z-index: 9999; 
+  animation: slideOutLeft 0.4s both ease-in; z-index: 9999;
 }
 
 .card-icon-link{
-	
+
 }
 
 .note-area label.active{
@@ -92,12 +92,17 @@ a.removeCard:hover, a.removeCard:active {
       width: calc(85% - 6rem) !important; }
  }
 
+ div.ta-toolbar .btn{
+   padding-left: 10px;
+   padding-right: 10px;
+ }
+
 /* ANIMATIONS
 ============================================================================= */
 @keyframes slideOutLeft {
     to      { transform: translateX(-80%); }
 }
-@-moz-keyframes slideOutLeft {  
+@-moz-keyframes slideOutLeft {
   to    { -moz-transform: translateX(-80%); }
 }
 @-webkit-keyframes slideOutLeft {

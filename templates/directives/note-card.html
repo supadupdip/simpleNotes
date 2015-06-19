@@ -10,9 +10,11 @@
                         </span>
                       </div>
                     <div class="row card-body">
+                      <label class="active">Details</label>
                           <div class="input-field col s12">
-                            <textarea class="materialize-textarea" ng-model="anote.topicDetails"></textarea>
-                            <label class="active">Details</label>
+                            <!--<textarea class="materialize-textarea" ng-model="anote.topicDetails"></textarea>-->
+                            <!--<div hallo-editor ng-model="anote.topicDetails" class="materialize-textarea"></div>-->
+                            <text-angular ng-model="anote.topicDetails" ta-toolbar-class="btn-toolbar" ta-toolbar-group-class="btn-group" ta-toolbar-button-class="btn btn-flat waves-orange" ta-toolbar-button-active-class="active"></text-angular>
                           </div>
                     </div>
                     </div>
@@ -33,7 +35,7 @@
 
                       <i class="mdi-content-add prefix"></i>
                       <input type="text" class="validate" action-item-input ng-model="newActionItem" placeholder="Add Action Item">
-                      
+
                     </div>
                     </div>
                   </div>

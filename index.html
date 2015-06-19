@@ -10,6 +10,7 @@
   <link href="css/supNotes.css" type="text/css" rel="stylesheet"/>
   <link href="css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
   <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
+  <link rel='stylesheet' href='/node_modules/textangular/dist/textAngular.css'>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
@@ -73,25 +74,38 @@
   </footer>
 
 <!-- Including our create new meeting modal -->
-<div new-note></div>
+
 
 
   <!--  Scripts-->
-  <script src="js/jquery-2.1.1.min.js"></script>
-  <script src="node_modules/materialize-css/bin/materialize.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="node_modules/materialize-css/bin/materialize.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
-  </script>
-  <!--<script src="js/main-init.js"></script>-->
+  <!-- Local Angular files -->
   <!--
   <script type="text/javascript" src="js/angular.min.js"></script>
   <script type="text/javascript" src="js/angular-route.min.js"></script>
   <script type="text/javascript" src="js/angular-animate.min.js"></script>-->
+
+  <!-- Angular Scripts -->
   <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+
+  <!--TextAngular-->
+  <script src='node_modules/textangular/dist/textAngular-rangy.min.js'></script>
+  <script src='node_modules/textangular/dist/textAngular-sanitize.min.js'></script>
+  <script src='node_modules/textangular/dist/textAngular.min.js'></script>
+  <!-- Hallo Scripts
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <script src="http://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
+  <script src="js/hallo.js" type="text/javascript"></script>-->
+
+  <!--Firebase Scripts -->
   <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+
   <script type="text/javascript" src="js/app.js"></script>
   <script type="text/javascript" src="js/routes.js"></script>
 
@@ -112,6 +126,7 @@
   <!-- Directives -->
   <script type="text/javascript" src="js/directives/common-directives.js"></script>
   <script type="text/javascript" src="js/directives/navbar.js"></script>
+  <script type="text/javascript" src="js/directives/hallo-editor.js"></script>
   <script type="text/javascript" src="js/directives/meeting-card.js"></script>
   <script type="text/javascript" src="js/directives/note-card.js"></script>
   <script type="text/javascript" src="js/directives/card-selects.js"></script>

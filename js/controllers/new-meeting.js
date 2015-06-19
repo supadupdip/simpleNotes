@@ -24,7 +24,7 @@ angular.module('SimpleNotes')
 			var newID = response.key();
 			if(newID){
 				//alert('New meeting was created with ID'+newID);
-				window.location.href = '#/meeting/'+newID+'/message/meetingcreated';
+				window.location.href = '#/meeting/'+newID+'/message/created';
 			}
 			else{
 				alert('There was an error creating the meeting')

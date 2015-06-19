@@ -13,6 +13,10 @@ angular.module('SimpleNotes')
 			templateUrl: 'templates/pages/edit-meeting-notes.html',
 			controller: 'editNoteController'
 		})
+		.when('/editNote/:noteID/message/:messageID',{ // /meeting/:meetingID/editNote/:noteID/
+			templateUrl: 'templates/pages/edit-meeting-notes.html',
+			controller: 'editNoteController'
+		})
 		.when('/editMeeting/:meetingID',{
 			templateUrl: 'templates/pages/edit-meeting.html',
 			controller: 'EditMeetingController'
@@ -22,6 +26,10 @@ angular.module('SimpleNotes')
 			controller: 'NewMeetingController'
 		})
 		.when('/newNote',{
+			templateUrl: 'templates/pages/new-note.html',
+			controller: 'NewNoteController'
+		})
+		.when('/newNote/meeting/:meetingID',{
 			templateUrl: 'templates/pages/new-note.html',
 			controller: 'NewNoteController'
 		})

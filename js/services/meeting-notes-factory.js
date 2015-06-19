@@ -19,6 +19,7 @@ angular.module('SimpleNotes')
 				meridian: null,
 				recurring: null,
 				occursEvery: null,
+				lastActivity: null,
 				organizer: null,
 				dialIn: null,
 				dcsLink: null,

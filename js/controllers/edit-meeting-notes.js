@@ -2,6 +2,18 @@ angular.module('SimpleNotes')
 	.controller('editNoteController',['$http', '$scope', '$routeParams', 'meetingFactory', 'connectionFactory', function($http, $scope, $routeParams, meetingFactory, connectionFactory){
 
 		var  noteID = $routeParams.noteID;
+
+		var messageID = null;
+		if($routeParams.messageID){
+			messageID = $routeParams.messageID;
+			if(messageID == "created"){
+				Materialize.toast('New Note Created!', 5000);
+			}
+			if(messageID == "updated"){
+				Materialize.toast('Note Updated!', 5000);
+			}
+		}
+
 		$scope.page = {};
 		$scope.page.loading = true;
 		$scope.page.updating = false;
@@ -12,7 +24,6 @@ angular.module('SimpleNotes')
 			response.success = false;
 		     response.$loaded().then(function() {
 		        //console.log("loaded note record:", response);
-		        response.success = true;
 		        $scope.page.loading = false;
 		        if(response.meeting){
 							$scope.note = response;

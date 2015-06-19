@@ -1,6 +1,7 @@
 angular.module('SimpleNotes')
-	.controller('NewNoteController',['$http', '$scope','meetingFactory', 'connectionFactory', function($http, $scope, meetingFactory, connectionFactory){
+	.controller('NewNoteController',['$http', '$scope','meetingFactory', 'connectionFactory', '$routeParams', function($http, $scope, meetingFactory, connectionFactory, $routeParams){
 			var controller = this;
+
 
 			$scope.page = {};
 			$scope.page.loading = true;
@@ -27,6 +28,10 @@ angular.module('SimpleNotes')
 					$scope.page.errorMessage = error;
 					alert('There was an error fetching data');
 				});
+				var  meetingID = $routeParams.meetingID;
+				if(meetingID.length){
+						$scope.newNote.meetingID = meetingID;
+				}
 
 		//Functions Available to our View
 		$scope.createNote = function(noteInfo){
@@ -34,7 +39,7 @@ angular.module('SimpleNotes')
 			for(var i = 0; i < $scope.meetings.length; i++){
 				console.log('evaluating ', $scope.meetings[i]);
 				if($scope.meetings[i].$id == noteInfo.meetingID){
-					noteInfo.meetingTitle = $scope.meetings[i].Title;
+					noteInfo.meeting = $scope.meetings[i].Title;
 				}
 			}
 

@@ -8,6 +8,7 @@ angular.module('SimpleNotes')
 		$scope.page.error = false;
 		$scope.page.searchText = '';
 		$scope.page.activeView = 'thumbnails';
+		$scope.page.activeSort = 'activity';
 
 
 		var response = connectionFactory.getAllMeetings();
@@ -17,8 +18,8 @@ angular.module('SimpleNotes')
 		        console.log("loaded record:", response);
 		        response.success = true;
 		        $scope.page.loading = false;
-		        if(response.length){
-					$scope.meetings = response;
+		        if(response){
+							$scope.meetings = response;
 		        }
 		        else{
 		        	//the item was not found

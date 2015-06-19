@@ -1,6 +1,9 @@
       <div class="row">
-        <div class="col s12 m9 l12">
-          <h3 class="header left orange-text"><a ng-href="#/meeting/{{note.meetingID}}" style="margin-left: -50px;"><i class="mdi-navigation-arrow-back orange circle white-text waves-effect waves-gray"></i></a> {{note.meeting}}</h3>
+        <div class="col s12 m9">
+          <h3 class="header left orange-text">
+            <a ng-href="#/meeting/{{note.meetingID}}" style="margin-left: -50px;"><i class="mdi-navigation-arrow-back orange circle white-text waves-effect waves-gray"></i></a> {{note.meeting}}
+            <a class="tooltipped right orange-text" ng-href="#/editMeeting/{{note.meetingID}}" data-trigger="hover click manual" data-container="body" data-placement="bottom" title="Edit Meeting"><i class="mdi-navigation-more-vert"></i></a>
+          </h3>
         </div>
         <div class="col s12 m3" style="margin-top: 10px;">
                   <div class="input-field col s12">
@@ -21,19 +24,21 @@
                 </ul>
               </div>
               <div id="test1" class="col s12 note-area">
-                <div ng-hide="note.noteCards">
+                <div ng-hide="note.noteCards.length">
                   <div class="row">
                     <div class="col s12 m12 center-align">
-                      <div class="card-panel blue-grey lighten-5">
-                        <span> Yay! Use the Add topic button below to get started :)
-                        </span>
+                      <div class="card-panel orange darken-4 lighten-5 white-text">
+                        <h1><i class="fa fa-list-alt"></i></h1>
+                        <span> <h5>Yay! Use the Add Note Card button below to get started :)</h5></span><br/>
+                        <a class="waves-effect waves-light btn-large orange lighten-5 orange-text text-darken-4 z-depth-2" ng-click="addNoteCard()" href="#!" no-link>Add Note Card <i class="mdi-content-add right"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!--Note Cards will render here -->
                 <note-card ng-repeat="anote in note.noteCards track by $index"></note-card>
-                  <div class="row center-align">
-                    <a class="waves-effect waves-light btn" ng-click="addNoteCard()">Add Topic <i class="mdi-content-add right"></i></a>
+                  <div class="row center-align" ng-show="note.noteCards.length">
+                    <a class="waves-effect waves-light btn orange darken-4" ng-click="addNoteCard()">Add Note Card <i class="mdi-content-add right"></i></a>
                   </div>
               </div>
               <div id="test2" class="col s12">
@@ -132,14 +137,20 @@
           </div>
 
       </div>
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-hide="page.updating">
-  <a class="btn-floating btn-large red tooltipped" ng-click="Update(note)" hastooltip data-position="left" data-delay="25" data-tooltip="Update">
-    <i class="large mdi-content-save"></i>
-  </a>
-  <ul>
-    <li><a class="btn-floating yellow darken-1 tooltipped" ng-click="ShareNote(note)"hastooltip data-position="left" data-delay="25" data-tooltip="Share Note"><i class="large mdi-social-share"></i></a></li>
-  </ul>
-</div>
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+       <!--<a class="btn-floating btn-large red" fab-tooltips>
+         <i class="large mdi-navigation-more-vert"></i>
+       </a>-->
+       <a class="btn-floating btn-large red tooltipped" ng-click="Update(note)" ng-href="#!" hastooltip data-trigger="hover click manual" data-container="body" data-placement="left" title="Update">
+         <i class="large mdi-content-save"></i>
+       </a>
+       <ul>
+         <!--<li class="tooltipped" data-trigger="hover click manual" data-container="body" data-placement="left" title="Share Meeting"><a class="btn-floating yellow darken-1 tooltipped" ><i class="large mdi-social-share"></i></a></li>
+         <li class="tooltipped" data-trigger="hover click manual" data-container="body" data-placement="left" title="New Note"><a class="btn-floating green"><i class="large mdi-editor-mode-edit"></i></a></li>-->
+       </ul>
+      </div>
+
+
  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-show="page.updating">
   <div preloader></div>
 </div>
