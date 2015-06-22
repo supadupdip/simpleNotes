@@ -68,14 +68,15 @@ angular.module('SimpleNotes')
 		$scope.Update = function(note){
 			$scope.page.updating = true;
 			//var response = connectionFactory.updateMeeting(meetingID);
-			      note.$save().then(function() {
-			        $scope.page.updating = false;
+			      debugger;
+						note.$save().then(function() {
+			        debugger;
+							$scope.page.updating = false;
 			        //pop up a message that it saved succesfully!
-			        Materialize.toast('Note updated!', 4000) // 4000 is the duration of the toast
-			        //$scope.addNewParticipantsToMeeting($scope.meeting.participants, note.attendees);
+			        //Materialize.toast('Note updated!', 4000);
 							//Also update the latest activity for this meeting
-							$scope.UpdateMeeting($scope.meeting);
-
+							//$scope.UpdateThisMeeting($scope.meeting);
+							debugger;
 			      }).catch(function(error) {
 			        alert('Error!');
 			      });
@@ -136,7 +137,7 @@ angular.module('SimpleNotes')
 			}
 			console.log('these are the attendees we are going to add', newParticipants);
 		};
-		$scope.UpdateMeeting = function(meeting){
+		$scope.UpdateThisMeeting = function(meeting){
 			var currentDate = new Date();
 			var jsonDate = currentDate.toJSON();
 			$scope.meeting.lastActivity = jsonDate;

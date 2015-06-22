@@ -13,6 +13,9 @@ angular.module('SimpleNotes')
 						console.log('There was an enter key', $scope.newActionItem);
 						console.log($scope);
 						newItem.details = $scope.newActionItem;
+						if(!$scope.anote.actionItems){
+							$scope.anote.actionItems= [];
+						}
 						$scope.anote.actionItems.push(newItem);
 						$scope.newActionItem = null;
 						var target = event.target;

@@ -92,9 +92,20 @@ a.removeCard:hover, a.removeCard:active {
       width: calc(85% - 6rem) !important; }
  }
 
+/* Additional styles for textAngular*/
  div.ta-toolbar .btn{
    padding-left: 10px;
    padding-right: 10px;
+ }
+
+ div.ta-bind ul li{
+   list-style-type: disc;
+   margin-left: 40px;
+ }
+
+ div.ta-bind{
+   border-bottom: 1px solid #9e9e9e;
+
  }
 
 /* ANIMATIONS
