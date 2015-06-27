@@ -1,1 +1,1 @@
-angular.module("SimpleNotes",['ngRoute', 'ngAnimate', 'firebase', 'SimpleNotesFilters', 'textAngular']);
+angular.module("SimpleNotes",['ngRoute', 'ngAnimate', 'firebase', 'SimpleNotesFilters', 'textAngular', 'ngSanitize']);

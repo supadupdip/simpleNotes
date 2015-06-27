@@ -1,13 +1,24 @@
 
-.ng-enter {
+.ng-enter.slide {
   -webkit-animation:slideInRight 0.4s both ease-in;
   -moz-animation:slideInRight 0.4s both ease-in;
   animation: slideInRight 0.4s both ease-in; z-index: 8888;
 }
-.ng-leave {
+.ng-leave.slide {
   -webkit-animation:slideOutLeft 0.4s both ease-in;
   -moz-animation:slideOutLeft 0.4s both ease-in;
   animation: slideOutLeft 0.4s both ease-in; z-index: 9999;
+}
+
+.ng-enter {
+  -webkit-animation:fadeIn 0.4s both ease-in;
+  -moz-animation:fadeIn 0.4s both ease-in;
+  animation: fadeIn 0.4s both ease-in; z-index: 8888;
+}
+.ng-leave {
+  -webkit-animation: fadeOut 0.2s both ease-in;
+  -moz-animation: fadeOut 0.2s both ease-in;
+  animation: fadeOut 0.2s both ease-in; z-index: 9999;
 }
 
 .card-icon-link{
@@ -107,9 +118,16 @@ a.removeCard:hover, a.removeCard:active {
    border-bottom: 1px solid #9e9e9e;
 
  }
+div.display-card ol li{
+  list-style-type: decimal !important;
+}
 
+div.display-card{
+  border-bottom: none;
+}
 /* ANIMATIONS
 ============================================================================= */
+/* slide in from the right */
 @keyframes slideOutLeft {
     to      { transform: translateX(-80%); }
 }
@@ -133,4 +151,30 @@ a.removeCard:hover, a.removeCard:active {
 @-webkit-keyframes slideInRight {
   from  { -webkit-transform:translateX(20%); }
   to    { -webkit-transform: translateX(0); }
+}
+
+/* Fade Out and Down */
+@keyframes fadeOut {
+    to      { transform: translateY(3%); opacity: 0;}
+}
+@-moz-keyframes fadeOut {
+  to    { -moz-transform: translateY(3%); opacity: 0;}
+}
+@-webkit-keyframes fadeOut {
+  to    { -webkit-transform: translateY(3%); opacity: 0;}
+}
+
+/* Fade In and Up */
+@keyframes fadeIn {
+    from    { transform:translateY(5%); opacity: 0;}
+    to      { transform: translateY(0); opacity: 1;}
+
+}
+@-moz-keyframes fadeIn {
+  from  { -moz-transform:translateY(5%); opacity: 0;}
+  to    { -moz-transform: translateY(0); opacity: 1;}
+}
+@-webkit-keyframes fadeIn {
+  from  { -webkit-transform:translateY(5%); opacity: 0;}
+  to    { -webkit-transform: translateY(0); opacity: 1;}
 }

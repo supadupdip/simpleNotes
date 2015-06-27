@@ -65,18 +65,16 @@ angular.module('SimpleNotes')
 			}
 		};
 
-		$scope.Update = function(note){
+		$scope.UpdateNote = function(note){
 			$scope.page.updating = true;
-			//var response = connectionFactory.updateMeeting(meetingID);
-			      debugger;
-						note.$save().then(function() {
-			        debugger;
-							$scope.page.updating = false;
+			var response = connectionFactory.updateMeeting(note.meetingID);
+
+						note.$save().then(function() {		
 			        //pop up a message that it saved succesfully!
-			        //Materialize.toast('Note updated!', 4000);
+			        Materialize.toast('Note updated!', 4000);
 							//Also update the latest activity for this meeting
-							//$scope.UpdateThisMeeting($scope.meeting);
-							debugger;
+							$scope.UpdateThisMeeting($scope.meeting);
+							$scope.page.updating = false;
 			      }).catch(function(error) {
 			        alert('Error!');
 			      });

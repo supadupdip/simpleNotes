@@ -45,9 +45,10 @@
                       <h5 class="orange-text">Note Details</h5>
                       <div class="z-depth-2 white" ng-repeat="card in note.noteCards" style="padding: 10px; margin-bottom: 20px;">
                       <h5>{{card.topicTitle}}</h5>
-                      <div>
+                      <!--<div ng-bind-html="card.topicDetails">
                         {{card.topicDetails}}
-                      </div>
+                      </div>-->
+                      <div class="display-card" ta-bind ng-model="card.topicDetails"></div>
                       <hr />
                       <div ng-repeat="actionItem in card.actionItems">
                           <i ng-class="actionItem.complete ? 'mdi-toggle-check-box prefix green-text' : 'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>

@@ -11,7 +11,7 @@
                 </div>
                 <div class="row">
                       <div class="input-field col s12">
-                        <textarea class="materialize-textarea" ng-model="meeting.description" required></textarea>
+                        <textarea class="materialize-textarea validate" ng-model="meeting.description" required></textarea>
                         <label>Description</label>
                       </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col s4 m4">
                       <label>Hour</label>
-                        <select id="hour" class="browser-default" ng-model="meeting.hour" required>
+                        <select id="hour" class="validate browser-default" ng-model="meeting.hour" required>
                           <option value="" selected disabled> -- </option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col s4 m4">
                       <label>Minute</label>
-                        <select id="minute" class="browser-default" ng-model="meeting.minute" required>
+                        <select id="minute" class="browser-default validate" ng-model="meeting.minute" required>
                           <option value="" selected disabled> -- </option>
                           <option value="00">00</option>
                           <option value="15">15</option>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col s4 m4">
                       <label>AM/PM</label>
-                        <select id="meridian" class="browser-default" ng-model="meeting.meridian">
+                        <select id="meridian" class="browser-default validate" ng-model="meeting.meridian">
                           <option value="AM" selected>AM</option>
                           <option value="PM">PM</option>
                         </select>
