@@ -78,9 +78,9 @@ angular.module('SimpleNotes')
 	})
 	.factory('connectionFactory', ['$firebaseObject', '$firebaseArray', function($firebaseObject, $firebaseArray){
 		var connection = {};
-
+		var baseURL = "https://sweltering-fire-6088.firebaseIO.com";
 		connection.getAllMeetings = function(){
-			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings";
+			var url = baseURL + "/meetings";
 			var ref = new Firebase(url);
 			return $firebaseArray(ref);
 			//return ref;
@@ -88,7 +88,7 @@ angular.module('SimpleNotes')
 		}
 		connection.newMeeting = function(meeting){
 			console.log(meeting);
-			var fireBase = new Firebase("https://sweltering-fire-6088.firebaseIO.com/meetings");
+			var fireBase = new Firebase(baseURL + "/meetings");
 			//var datapush = fireBase.push(meeting);
 			//var meetingID = datapush.key();
 			//console.log(meetingID);
@@ -98,7 +98,7 @@ angular.module('SimpleNotes')
 
 		connection.getMeeting = function(meetingID){
 			console.log('now getting meeting with ID', meetingID);
-			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
+			var url = baseURL + "/meetings/"+meetingID;
 			var ref = new Firebase(url);
 
 			return $firebaseObject(ref);
@@ -108,28 +108,28 @@ angular.module('SimpleNotes')
 		connection.updateMeeting = function(meetingID){
 			console.log('now updating meeting with ID', meetingID);
 			var wasSuccessful = false;
-			var url = "https://sweltering-fire-6088.firebaseIO.com/meetings/"+meetingID;
+			var url = baseURL+"/meetings/"+meetingID;
 			var ref = new Firebase(url);
 
 			return $firebaseObject(ref);
 		}
 		connection.newNote = function(noteInfo){
 			console.log('running the newNote function in the service',noteInfo);
-			var firebase = new Firebase("https://sweltering-fire-6088.firebaseIO.com/meetingNotes");
+			var firebase = new Firebase(baseURL+"/meetingNotes");
 
 			return firebase.push(noteInfo);
 		}
 
 		connection.getNote = function(noteID){
 			console.log('now getting note with ID', noteID);
-			var url = "https://sweltering-fire-6088.firebaseIO.com/meetingNotes/"+noteID;
+			var url = baseURL+"/meetingNotes/"+noteID;
 			var ref = new Firebase(url);
 
 			return $firebaseObject(ref);
 		}
 		connection.getMeetingNotes = function(meetingID){
 			console.log('now getting all notes for meeting', meetingID);
-			var url = "https://sweltering-fire-6088.firebaseIO.com/meetingNotes";
+			var url = baseURL+"/meetingNotes";
 			var ref = new Firebase(url);
 			var notesRef = ref.orderByChild("meetingID").equalTo(meetingID);
 
