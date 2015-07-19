@@ -31,7 +31,7 @@ angular.module('SimpleNotes')
 			},
 			controller: function($scope, $element, $attrs){
 				$scope.addPastParticipant = function(participant){
-					console.log('logging the past participant we are trying to add',participant);
+					//console.log('logging the past participant we are trying to add',participant);
 					if(!$scope.note.attendees){
 						$scope.note.attendees = [];
 					}

@@ -10,8 +10,8 @@ angular.module('SimpleNotes')
 							complete: false,
 							mentions: ""
 						};
-						console.log('There was an enter key', $scope.newActionItem);
-						console.log($scope);
+						//console.log('There was an enter key', $scope.newActionItem);
+						//console.log($scope);
 						newItem.details = $scope.newActionItem;
 						if(!$scope.anote.actionItems){
 							$scope.anote.actionItems= [];

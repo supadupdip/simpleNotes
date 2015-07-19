@@ -13,7 +13,7 @@ angular.module('SimpleNotes')
 
 			response.success = false;
 		     response.$loaded().then(function() {
-		        console.log("loaded record:", response);
+		        //console.log("loaded record:", response);
 		        response.success = true;
 		        $scope.page.loading = false;
 		        if(response.Title){
@@ -62,6 +62,7 @@ angular.module('SimpleNotes')
 
 		};
 		$scope.ConfirmedDelete = function(meeting){
+			
 			//Once the user confirms we delete the meeting
 			meeting.$remove().then(function(ref) {
 			  // data has been deleted locally and in Firebase

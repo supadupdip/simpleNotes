@@ -21,7 +21,7 @@
                     <div class="card-action">
                       <p class="action-title">Action Items</p>
                       <div ng-repeat="actionItem in anote.actionItems">
-                            <div class="input-field col s12" editable-action-item>
+                            <div class="input-field col s12 slidable" editable-action-item>
                               <a href="#" no-link ng-click="toggleComplete(actionItem)" class="prefix">
                                 <i class="mdi-toggle-check-box prefix green-text" ng-show="actionItem.complete"></i>
                                 <i class="mdi-toggle-check-box-outline-blank prefix orange-text" ng-hide="actionItem.complete"></i>

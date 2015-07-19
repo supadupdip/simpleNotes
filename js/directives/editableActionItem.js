@@ -11,12 +11,12 @@ angular.module('SimpleNotes')
 				});
 			},
 			controller: function($scope){
-				console.log('Logging from within editable aciton item');
+				//console.log('Logging from within editable aciton item');
 
 				$scope.removeActionItem = function(actionItem){
-					console.log('We are trying to remove an action item');
-					console.log(actionItem);
-					console.log($scope);
+					//console.log('We are trying to remove an action item');
+					//console.log(actionItem);
+					//console.log($scope);
 					var index = $scope.$parent.anote.actionItems.indexOf(actionItem);
 					$scope.$parent.anote.actionItems.splice(index, 1);
 				};

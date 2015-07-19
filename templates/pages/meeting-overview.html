@@ -36,10 +36,10 @@
                 </div>
               </div>
                <ul class="collapsible popout" collapsible-initialize data-collapsible="accordion">
-                  <li ng-repeat="note in notes">
+                  <li ng-repeat="note in notes | orderBy: '-meetingDate'">
                     <div class="collapsible-header">
                       <i class="mdi-action-today darken-1"></i>{{note.meetingDate | date: MM/dd/yyyy}}
-                      <a ng-href="#/editNote/{{note.$id}}" class="right"><i class="mdi-navigation-arrow-forward"></i></a>
+                      <a ng-href="#/editNote/{{note.$id}}" class="right btn-flat waves-effect waves-gray"><i class="mdi-navigation-arrow-forward"></i></a>
                     </div>
                     <div class="collapsible-body grey lighten-4" style="padding: 20px">
                       <h5 class="orange-text">Note Details</h5>
@@ -50,6 +50,7 @@
                       </div>-->
                       <div class="display-card" ta-bind ng-model="card.topicDetails"></div>
                       <hr />
+
                       <div ng-repeat="actionItem in card.actionItems">
                           <i ng-class="actionItem.complete ? 'mdi-toggle-check-box prefix green-text' : 'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>
                           {{actionItem.details}}
@@ -76,7 +77,7 @@
               <div ng-show="notes.length">
                 <div class="row">
                   <div class="col s12 m12">
-                    <div class="card-panel" ng-repeat="note in notes">
+                    <div class="card-panel" ng-repeat="note in notes | orderBy: '-meetingDate'" ng-show="note.actionItemsIncomplete">
                       <h5 class="orange-text">{{note.meetingDate | date: MM/dd/yyyy}}</h5>
                       <div ng-repeat='card in note.noteCards'>
                         <div ng-repeat="actionItem in card.actionItems">
@@ -131,14 +132,14 @@
         </div>
       </div>
     </div>
-    <!--
+<!--
 <pre>{{notes | json}}</pre>-->
 
- <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+ <div class="fixed-action-btn" fab menuactive="false" style="bottom: 45px; right: 24px;">
     <!--<a class="btn-floating btn-large red" fab-tooltips>
       <i class="large mdi-navigation-more-vert"></i>
     </a>-->
-    <a class="btn-floating btn-large green tooltipped" ng-href="#/newNote/meeting/{{meeting.$id}}" hastooltip data-trigger="hover click manual" data-container="body" data-placement="left" title="New Note"><i class="large mdi-editor-mode-edit"></i></a>
+    <a  class="btn-floating btn-large green tooltipped" ng-href="#/newNote/meeting/{{meeting.$id}}" hastooltip data-trigger="hover click manual" data-container="body" data-placement="left" title="New Note"><i class="large mdi-editor-mode-edit"></i></a>
     <ul>
       <!--<li class="tooltipped" data-trigger="hover click manual" data-container="body" data-placement="left" title="Share Meeting"><a class="btn-floating yellow darken-1 tooltipped" ><i class="large mdi-social-share"></i></a></li>
       <li class="tooltipped" data-trigger="hover click manual" data-container="body" data-placement="left" title="New Note"><a class="btn-floating green"><i class="large mdi-editor-mode-edit"></i></a></li>-->

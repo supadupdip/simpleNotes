@@ -6,7 +6,7 @@
   <title>SimpleNotes</title>
 
   <!-- CSS  -->
-  <link href="node_modules/materialize-css/bin/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="node_modules/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/supNotes.css" type="text/css" rel="stylesheet"/>
   <link href="css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
   <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
@@ -21,13 +21,15 @@
           <a id="logo-container" href="#" class="brand-logo center-align hide-on-med-and-up"><i class="mdi-action-speaker-notes right"></i></a>
       <a href="#" top-nav no-link data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu" ></i></a>
         <ul id="top-nav" class="right hide-on-med-and-down">
-          <li><a href="#">Meetings</a></li>
+          <li><a href="#/">Meetings</a></li>
+          <li><a href="#/about">About</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
           <li><a href="#/newNote"><i class="mdi-content-add left"></i>New Note</a></li>
         </ul>
         <ul id="nav-mobile" class="side-nav">
           <li><a href="#" class="orange-text">Simple Notes <i class="mdi-action-speaker-notes right"></i></a></li>
-          <li><a href="#">Meetings</a></li>
+          <li><a href="#/">Meetings</a></li>
+          <li><a href="#/about">About</a></li>
           <li><a href="#/newMeeting"><i class="mdi-content-add left"></i>New Meeting</a></li>
           <li><a href="#/newNote"><i class="mdi-content-add left"></i>New Note</a></li>
         </ul>
@@ -60,10 +62,8 @@
         <div class="col l3 s12">
           <h5 class="white-text">Quick Links</h5>
           <ul>
-            <li><a class="white-text" href="#!">Video Tutorials</a></li>
-            <li><a class="white-text" href="#!">Use Cases</a></li>
-            <li><a class="white-text" href="#!">Our Users</a></li>
-            <li><a class="white-text" href="#!">Feedback</a></li>
+            <li><a class="white-text" href="#/about">About</a></li>
+
           </ul>
         </div>
       </div>
@@ -81,7 +81,7 @@
 
   <!--  Scripts-->
   <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="node_modules/materialize-css/bin/materialize.js"></script>
+  <script type="text/javascript" src="node_modules/materialize/js/materialize.min.js"></script>
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Local Angular files -->
@@ -91,9 +91,9 @@
   <script type="text/javascript" src="js/angular-animate.min.js"></script>-->
 
   <!-- Angular Scripts -->
-  <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-route/angular-route.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.js"></script>
   <script src="node_modules/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
 
   <!--TextAngular-->
@@ -121,6 +121,7 @@
   <script type="text/javascript" src="js/controllers/new-note.js"></script>
   <script type="text/javascript" src="js/controllers/edit-meeting.js"></script>
   <script type="text/javascript" src="js/controllers/edit-meeting-notes.js"></script>
+  <script type="text/javascript" src="js/controllers/about.js"></script>
 
   <!-- Directives -->
   <script type="text/javascript" src="js/directives/common-directives.js"></script>

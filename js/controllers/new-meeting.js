@@ -5,7 +5,7 @@ angular.module('SimpleNotes')
 		$scope.meeting = new meetingFactory.getMeeting();
 
 
-		console.log($scope.meeting);
+		//console.log($scope.meeting);
 
 
 		$scope.back = function(){
@@ -34,10 +34,10 @@ angular.module('SimpleNotes')
 			$http({method: 'POST', url:'/json'})
 				.catch(function(meeting){
 					$scope.errors = meeting.data.error;
-					console.log($scope.errors.text);
+					//console.log($scope.errors.text);
 				})
 				.success(function(response){
-					console.log(response.text);
+					//console.log(response.text);
 					//Show success message
 
 					//Redirect to Meeting overview

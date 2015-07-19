@@ -58,7 +58,7 @@
                       <ul class="collection with-header">
                         <li class="collection-item"  ng-repeat="anote in note.noteCards">
                           <div>
-                            {{anote.topicTitle}}<a href="#!" class="secondary-content"><i class="mdi-action-swap-vert"></i></a>
+                            {{anote.topicTitle}}<!--<a href="#!" class="secondary-content"><i class="mdi-action-swap-vert"></i></a>-->
                           </div>
                         </li>
                       </ul>
@@ -78,28 +78,25 @@
                   </div>
                 </div>
               <!-- Mark up that will show when there are notes -->
-                <ul class="collection">
-                  <li class="collection-item avatar" ng-repeat="anote in note.noteCards">
-                    <i class="mdi-action-today circle grey darken-1"></i>
-                    <span class="title">{{anote.topicTitle}}</span>
-                    <ul ng-show="anote.actionItems.length">
-                      <li ng-repeat="item in anote.actionItems">
-                        <i ng-class="item.complete ?
-                        'mdi-toggle-check-box prefix green-text' :
-                        'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>
-                        {{item.details}}</li>
-                    </ul>
-                    <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
-                  </li>
+              <div class="card-panel" ng-repeat="anote in note.noteCards">
+                <span class="title">{{anote.topicTitle}}</span>
+                <ul ng-show="anote.actionItems.length">
+                  <li ng-repeat="item in anote.actionItems">
+                    <i ng-class="item.complete ?
+                    'mdi-toggle-check-box prefix green-text' :
+                    'mdi-toggle-check-box-outline-blank prefix orange-text'"></i>
+                    {{item.details}}</li>
                 </ul>
+              </div>
+
               </div>
 
 
 
 
             </div>
-            <pre>{{note | json}}
-            </pre>
+            <!--<pre>{{note | json}}
+            </pre>-->
           </div>
 
 

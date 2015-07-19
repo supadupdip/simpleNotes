@@ -23,7 +23,7 @@ angular.module('SimpleNotes')
 
 			response.success = false;
 		     response.$loaded().then(function() {
-		        //console.log("loaded note record:", response);
+		        ////console.log("loaded note record:", response);
 		        $scope.page.loading = false;
 		        if(response.meeting){
 							$scope.note = response;
@@ -39,7 +39,7 @@ angular.module('SimpleNotes')
 		     	$scope.page.errorMessage = error;
 		     	alert('There was an error fetching data');
 		     });
-		//console.log($scope.note);
+		////console.log($scope.note);
 		//$scope.loadMeetingInfo($scope.note.meetingID);
 		$scope.addNoteCard = function(){
 			var blankCard = new meetingFactory.getNoteCard();
@@ -90,13 +90,13 @@ angular.module('SimpleNotes')
 			  $('#itemDeleted').openModal();
 			  //window.location = "/";
 			}, function(error) {
-			  //console.log("Error:", error);
+			  ////console.log("Error:", error);
 			});
 			//We also delete any meeting notes associated with this meeting
 		};
 
 		$scope.undoAttendee = function(){
-			console.log('attempting undo');
+			//console.log('attempting undo');
 		};
 
 		$scope.loadMeetingInfo = function(meetingID){
@@ -104,7 +104,7 @@ angular.module('SimpleNotes')
 
 				meetingResponse.success = false;
 			     meetingResponse.$loaded().then(function() {
-			        console.log("loaded record:", meetingResponse);
+			        //console.log("loaded record:", meetingResponse);
 			        meetingResponse.success = true;
 			        $scope.page.loading = false;
 			        if(meetingResponse.Title){
@@ -125,7 +125,7 @@ angular.module('SimpleNotes')
 			     });
 		};
 		$scope.addNewParticipantsToMeeting = function(participants, meetingAttendees){
-			console.log('Logging the attendees for the meeting', meetingAttendees);
+			//console.log('Logging the attendees for the meeting', meetingAttendees);
 			var newParticipants = [];
 			for(var i = 0; i< meetingAttendees.length; i++){
 				//Let's check if this attendee already exists in the meeting participants list
@@ -133,7 +133,7 @@ angular.module('SimpleNotes')
 				   newParticipants.push(meetingAttendees[i]);
 				}
 			}
-			console.log('these are the attendees we are going to add', newParticipants);
+			//console.log('these are the attendees we are going to add', newParticipants);
 		};
 		$scope.UpdateThisMeeting = function(meeting){
 			var currentDate = new Date();

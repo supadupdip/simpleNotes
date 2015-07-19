@@ -87,17 +87,17 @@ angular.module('SimpleNotes')
 
 		}
 		connection.newMeeting = function(meeting){
-			console.log(meeting);
+			//console.log(meeting);
 			var fireBase = new Firebase(baseURL + "/meetings");
 			//var datapush = fireBase.push(meeting);
 			//var meetingID = datapush.key();
-			//console.log(meetingID);
+			////console.log(meetingID);
 
 			return fireBase.push(meeting);
 		}
 
 		connection.getMeeting = function(meetingID){
-			console.log('now getting meeting with ID', meetingID);
+			//console.log('now getting meeting with ID', meetingID);
 			var url = baseURL + "/meetings/"+meetingID;
 			var ref = new Firebase(url);
 
@@ -106,7 +106,7 @@ angular.module('SimpleNotes')
 		}
 
 		connection.updateMeeting = function(meetingID){
-			console.log('now updating meeting with ID', meetingID);
+			//console.log('now updating meeting with ID', meetingID);
 			var wasSuccessful = false;
 			var url = baseURL+"/meetings/"+meetingID;
 			var ref = new Firebase(url);
@@ -114,21 +114,21 @@ angular.module('SimpleNotes')
 			return $firebaseObject(ref);
 		}
 		connection.newNote = function(noteInfo){
-			console.log('running the newNote function in the service',noteInfo);
+			//console.log('running the newNote function in the service',noteInfo);
 			var firebase = new Firebase(baseURL+"/meetingNotes");
 
 			return firebase.push(noteInfo);
 		}
 
 		connection.getNote = function(noteID){
-			console.log('now getting note with ID', noteID);
+			//console.log('now getting note with ID', noteID);
 			var url = baseURL+"/meetingNotes/"+noteID;
 			var ref = new Firebase(url);
 
 			return $firebaseObject(ref);
 		}
 		connection.getMeetingNotes = function(meetingID){
-			console.log('now getting all notes for meeting', meetingID);
+			//console.log('now getting all notes for meeting', meetingID);
 			var url = baseURL+"/meetingNotes";
 			var ref = new Firebase(url);
 			var notesRef = ref.orderByChild("meetingID").equalTo(meetingID);

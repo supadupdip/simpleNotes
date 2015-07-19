@@ -8,11 +8,11 @@ angular.module('SimpleNotes')
 			$scope.page.updating = false;
 			$scope.page.error = false;
 			$scope.newNote = new meetingFactory.getNote();
-			console.log('logging newNote at the beginning of the page',$scope.newNote);
+			//console.log('logging newNote at the beginning of the page',$scope.newNote);
 			var response = connectionFactory.getAllMeetings();
 
 				response.$loaded().then(function() {
-						console.log("loaded available meetings:", response);
+						//console.log("loaded available meetings:", response);
 						$scope.page.loading = false;
 						if(response.length){
 							$scope.meetings = response;
@@ -29,7 +29,7 @@ angular.module('SimpleNotes')
 					alert('There was an error fetching data');
 				});
 				var  meetingID = $routeParams.meetingID;
-				if(meetingID.length){
+				if(meetingID){
 						$scope.newNote.meetingID = meetingID;
 				}
 
@@ -37,7 +37,7 @@ angular.module('SimpleNotes')
 		$scope.createNote = function(noteInfo){
 			//find the TItle of the Meeting
 			for(var i = 0; i < $scope.meetings.length; i++){
-				console.log('evaluating ', $scope.meetings[i]);
+				//console.log('evaluating ', $scope.meetings[i]);
 				if($scope.meetings[i].$id == noteInfo.meetingID){
 					noteInfo.meeting = $scope.meetings[i].Title;
 				}
@@ -57,10 +57,10 @@ angular.module('SimpleNotes')
 			$http({method: 'POST', url:'/json'})
 				.catch(function(meeting){
 					$scope.errors = meeting.data.error;
-					console.log($scope.errors.text);
+					//console.log($scope.errors.text);
 				})
 				.success(function(response){
-					console.log(response.text);
+					//console.log(response.text);
 					//Show success message
 
 					//Redirect to Meeting overview

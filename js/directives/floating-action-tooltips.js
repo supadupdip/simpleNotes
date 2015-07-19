@@ -1,44 +1,58 @@
 angular.module('SimpleNotes')
-	.directive('fabTooltips',function(){
+	.directive('fab',function(){
 		return{
 			restrict: 'A',
 			link: function($scope, $element, $attrs){
-				$($element).mouseover(function(){
-					console.log(this);
-					$(this).siblings('ul').find('li').each(function(){
-						//console.log('mouseovering on ', this);
-						$(this).tooltip('show');
-					});
+				$($element).mouseenter(function(){
+					$scope.showTooltips($element);
 				});
 
 				$($element).mouseleave(function(){
-					console.log(this);
-					$(this).siblings('ul').find('li').each(function(){
-						//console.log('mouseovering on ', this);
+					$scope.hideTooltips($element);
+				});
+
+				$($element).on('click', function(){
+					var menuactive = $scope.toggleActive();
+					//console.log(this);
+					//console.log(menuactive);
+					if(menuactive == "false"){
+						$scope.hideTooltips($element);
+						$element.closeFAB();
+					}
+					else{
+						$scope.showTooltips($element);
+						$element.openFAB();
+					}
+					//this.openFAB();
+
+				});
+
+			},
+			controller: function($scope, $element, $attrs){
+				$scope.toggleActive = function(){
+					var menuActive = $attrs.menuactive;
+					//console.log('we are going to toggle', menuActive);
+					if(menuActive == 'false'){
+						$attrs.menuactive = 'true';
+						//$($element).openFAB();
+					}
+					else{
+						$attrs.menuactive = 'false';
+						//$($element).closeFAB();
+					}
+					return menuActive;
+				};
+				$scope.showTooltips = function(elem){
+					$(elem).find('li.tooltipped').each(function(){
+						$(this).tooltip('show');
+					});
+				};
+				$scope.hideTooltips = function(elem){
+					$(elem).find('li.tooltipped').each(function(){
+						////console.log('mouseovering on ', this);
 						$(this).tooltip('hide');
 					});
-				});
-				/* Waiting for FAB actions to be added to 
-				$($element).on('click', function(){
-					($($element).hasClass('menu-open')) ? console.log('this button does have an active class'): console.log('this button does not have an active class');
-				});
-
-				$($element).on('click', function(){
-					this.closeFAB();
-				});*/
-
-				/*
-				var pos = $attrs.position;
-				var delay = $attrs.delay;
-				var text = $attrs.tooltip;
-				console.log(text);
-				$('.tooltipped').tooltip({
-					position: pos,
-					delay: delay,
-					tooltip: text
-				});*/
-
-				//console.log($element);
+				};
 			}
 		}
 	});

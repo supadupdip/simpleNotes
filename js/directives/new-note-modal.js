@@ -6,11 +6,11 @@ angular.module('SimpleNotes')
 			priority: 1,
 			templateUrl: 'templates/directives/new-note-modal.html',
 			link: function($scope, $element, $attrs){
-				console.log($element);
+				//console.log($element);
 				$($element).find('div.modal').leanModal({
 						dismissible: false,
 						ready: function(){
-							console.log('Im being called on modal ready!');
+							//console.log('Im being called on modal ready!');
 							$scope.getstarted();
 						},
 						complete: function() { alert('Closed'); }
@@ -29,7 +29,7 @@ angular.module('SimpleNotes')
 					var response = connectionFactory.getAllMeetings();
 					response.success = false;
 				     response.$loaded().then(function() {
-				        console.log("loaded record:", response);
+				        //console.log("loaded record:", response);
 				        response.success = true;
 				        $scope.page.loading = false;
 				        if(response.length){
@@ -62,10 +62,10 @@ angular.module('SimpleNotes')
 					$http({method: 'POST', url:'/json'})
 						.catch(function(meeting){
 							$scope.errors = meeting.data.error;
-							console.log($scope.errors.text);
+							//console.log($scope.errors.text);
 						})
 						.success(function(response){
-							console.log(response.text);
+							//console.log(response.text);
 							//Show success message
 
 							//Redirect to Meeting overview

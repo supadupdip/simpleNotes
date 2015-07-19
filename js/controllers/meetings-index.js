@@ -15,7 +15,7 @@ angular.module('SimpleNotes')
 
 			response.success = false;
 		     response.$loaded().then(function() {
-		        console.log("loaded record:", response);
+		        //console.log("loaded record:", response);
 		        response.success = true;
 		        $scope.page.loading = false;
 		        if(response){
@@ -51,7 +51,7 @@ angular.module('SimpleNotes')
 				controller.meetings = data;
 			})
 			.catch(function(err){
-				console.log(err);
+				//console.log(err);
 			})
 			;*/
 

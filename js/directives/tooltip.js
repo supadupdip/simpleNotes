@@ -5,7 +5,7 @@ angular.module('SimpleNotes')
 			link: function($scope, $element, $attrs){
 				$($element).tooltip();
 
-				//console.log($element);
+				////console.log($element);
 			}
 		}
 	});

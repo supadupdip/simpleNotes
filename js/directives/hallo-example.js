@@ -4,7 +4,7 @@ angular.module('SimpleNotes')
 			restrict: 'A',
 			require: 'ngModel',
 			link: function($scope, $element, $attrs, ngModelCtrl){
-				 console.log($element);
+				 //console.log($element);
 				 $element.hallo({
 				 	plugins:{
 				 		'halloformat':{},
@@ -14,7 +14,7 @@ angular.module('SimpleNotes')
 				 		'halloreundo':{}
 				 	}
 				 });
-				console.log($element);
+				//console.log($element);
 				 ngModelCtrl.$render = function(){
 				 	var contents = ngModelCtrl.$viewValue;
 				 	$element.hallo('setContents', contents)

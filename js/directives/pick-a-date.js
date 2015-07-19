@@ -12,7 +12,7 @@ angular.module("SimpleNotes")
       //initialize control
       var parser = function(date){
           //debugger ;
-          console.log('running when date is set', date);
+          //console.log('running when date is set', date);
 
           if(jsonDate instanceof Date){
             var jsonDate = date.toJSON();
